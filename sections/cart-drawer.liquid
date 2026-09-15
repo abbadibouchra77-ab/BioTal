@@ -35,7 +35,7 @@
                 {{ 'cart.bundle_upsell.text' | t: product: settings.cart_bundle_product.title, price: bundle_price }}
               </p>
               <product-quick-add data-product-card>
-                <form method="post" action="/cart/add" class="cart-upsell__form">
+                <form method="post" action="{{ routes.cart_add_url }}" class="cart-upsell__form">
                   <input type="hidden" name="id" value="{{ bundle_variant.id }}">
                   <button type="submit" class="btn btn--accent btn--sm" data-quick-add-submit>
                     <span data-quick-add-label>{{ 'cart.bundle_upsell.cta' | t }}</span>

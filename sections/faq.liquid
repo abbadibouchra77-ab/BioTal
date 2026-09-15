@@ -10,13 +10,14 @@
       </h2>
     </div>
 
+    {%- assign faq_group = 'faq-' | append: section.id -%}
     <div class="faq__list">
       {%- for block in section.blocks -%}
         <div {{ block.shopify_attributes }}>
           {%- render 'accordion-item',
             title: block.settings.question,
             content: block.settings.answer,
-            group: 'faq-' | append: section.id,
+            group: faq_group,
             open: forloop.first
           -%}
         </div>

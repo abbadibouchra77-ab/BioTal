@@ -143,20 +143,26 @@
         {%- endform -%}
 
         <div class="product__accordions">
-          {%- assign composition = product.metafields.custom.composition -%}
-          {%- assign dosage = product.metafields.custom.dosage -%}
-          {%- assign usage = product.metafields.custom.usage -%}
+          {%- liquid
+            assign composition = product.metafields.custom.composition
+            assign dosage = product.metafields.custom.dosage
+            assign usage = product.metafields.custom.usage
+            assign accordion_group = 'product-' | append: section.id
+            assign composition_title = 'products.accordion.composition' | t
+            assign usage_title = 'products.accordion.usage' | t
+            assign shipping_title = 'products.accordion.shipping' | t
+          -%}
           {%- if composition != blank or dosage != blank -%}
             {%- capture composition_content -%}
               {%- if composition != blank -%}{{ composition.value }}{%- endif -%}
               {%- if dosage != blank -%}{{ dosage.value }}{%- endif -%}
             {%- endcapture -%}
-            {%- render 'accordion-item', title: 'products.accordion.composition' | t, content: composition_content, group: 'product-' | append: section.id -%}
+            {%- render 'accordion-item', title: composition_title, content: composition_content, group: accordion_group -%}
           {%- endif -%}
           {%- if usage != blank -%}
-            {%- render 'accordion-item', title: 'products.accordion.usage' | t, content: usage.value, group: 'product-' | append: section.id -%}
+            {%- render 'accordion-item', title: usage_title, content: usage.value, group: accordion_group -%}
           {%- endif -%}
-          {%- render 'accordion-item', title: 'products.accordion.shipping' | t, content: section.settings.shipping_text, group: 'product-' | append: section.id -%}
+          {%- render 'accordion-item', title: shipping_title, content: section.settings.shipping_text, group: accordion_group -%}
         </div>
 
         <div class="product__allergens">

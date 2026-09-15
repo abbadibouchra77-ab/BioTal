@@ -80,7 +80,7 @@
           </a>
         {%- elsif card_variant.available -%}
           <product-quick-add data-product-card>
-            <form method="post" action="/cart/add" class="product-card__quick-add-form">
+            <form method="post" action="{{ routes.cart_add_url }}" class="product-card__quick-add-form">
               <input type="hidden" name="id" value="{{ card_variant.id }}">
               <button type="submit" class="btn btn--primary btn--full btn--sm" data-quick-add-submit>
                 <span data-quick-add-label>{{ 'products.form.add_to_cart' | t }}</span>

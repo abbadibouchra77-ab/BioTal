@@ -1,9 +1,8 @@
 {%- comment -%} Liens réseaux sociaux configurés dans les réglages du thème. {%- endcomment -%}
-{%- assign socials = 'instagram,tiktok,facebook,pinterest' | split: ',' -%}
 {%- assign has_social = false -%}
-{%- for s in socials -%}
-  {%- if settings['social_' | append: s] != blank -%}{%- assign has_social = true -%}{%- endif -%}
-{%- endfor -%}
+{%- if settings.social_instagram != blank or settings.social_tiktok != blank or settings.social_facebook != blank or settings.social_pinterest != blank -%}
+  {%- assign has_social = true -%}
+{%- endif -%}
 {%- if has_social -%}
   <ul class="social-links" aria-label="{{ 'general.social.follow_us' | t }}">
     {%- if settings.social_instagram != blank -%}

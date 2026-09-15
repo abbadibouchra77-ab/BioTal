@@ -37,7 +37,7 @@
               <a href="{{ product.url }}" class="btn btn--primary btn--lg">{{ 'sections.featured_product.cta' | t }}</a>
             {%- elsif variant.available -%}
               <product-quick-add data-product-card>
-                <form method="post" action="/cart/add" class="featured-product__form">
+                <form method="post" action="{{ routes.cart_add_url }}" class="featured-product__form">
                   <input type="hidden" name="id" value="{{ variant.id }}">
                   <button type="submit" class="btn btn--primary btn--lg" data-quick-add-submit>
                     <span data-quick-add-label>{{ 'sections.featured_product.add_to_cart' | t }}</span>
