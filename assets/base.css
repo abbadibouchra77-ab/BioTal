@@ -156,7 +156,7 @@ summary:focus-visible,
 
 .section-header__eyebrow {
   display: inline-block;
-  color: var(--color-accent-ink);
+  color: #D9D9D9;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -336,7 +336,7 @@ summary:focus-visible,
 }
 
 .price--on-sale .price__regular {
-  color: var(--color-accent-dark);
+  color: #D9D9D9;
 }
 
 /* Skeleton / loading */
