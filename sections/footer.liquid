@@ -1,0 +1,106 @@
+<footer class="site-footer">
+  <div class="page-width">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        {%- if settings.logo -%}
+          <img
+            src="{{ settings.logo | image_url: width: 220 }}"
+            alt="{{ shop.name }}"
+            width="140"
+            height="{{ 140 | divided_by: settings.logo.aspect_ratio | default: 60 }}"
+            loading="lazy"
+            style="width:140px;height:auto;"
+          >
+        {%- else -%}
+          <p class="site-footer__logo-text">{{ shop.name }}</p>
+        {%- endif -%}
+        {%- if section.settings.tagline != blank -%}
+          <p class="site-footer__tagline">{{ section.settings.tagline }}</p>
+        {%- endif -%}
+        <p class="site-footer__made-in">{{ 'footer.made_in' | t }}</p>
+        {%- render 'social-links' -%}
+      </div>
+
+      {%- if section.settings.menu != blank -%}
+        <div class="site-footer__col">
+          <h3 class="site-footer__heading">{{ 'footer.legal_heading' | t }}</h3>
+          <ul class="site-footer__links">
+            {%- for link in section.settings.menu.links -%}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+
+      <div class="site-footer__col">
+        <h3 class="site-footer__heading">{{ 'footer.help_heading' | t }}</h3>
+        <ul class="site-footer__links">
+          <li><a href="mailto:{{ settings.legal_email }}">{{ settings.legal_email }}</a></li>
+          {%- if section.settings.phone != blank -%}
+            <li><a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+
+      <div class="site-footer__col site-footer__newsletter">
+        <h3 class="site-footer__heading">{{ 'footer.newsletter_heading' | t }}</h3>
+        <p class="site-footer__newsletter-text">{{ 'general.newsletter.subheading' | t }}</p>
+        {%- form 'customer', id: 'FooterNewsletterForm', class: 'newsletter-form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="newsletter-form__row">
+            <label for="FooterNewsletterEmail" class="visually-hidden">{{ 'general.newsletter.placeholder' | t }}</label>
+            <input
+              type="email"
+              name="contact[email]"
+              id="FooterNewsletterEmail"
+              placeholder="{{ 'general.newsletter.placeholder' | t }}"
+              required
+              autocomplete="email"
+            >
+            <button type="submit" class="btn btn--accent">{{ 'general.newsletter.submit' | t }}</button>
+          </div>
+          {%- if form.posted_successfully? -%}
+            <p class="newsletter-form__message" role="status">{{ 'general.newsletter.success' | t }}</p>
+          {%- elsif form.errors -%}
+            <p class="newsletter-form__message newsletter-form__message--error" role="alert">{{ 'general.newsletter.error' | t }}</p>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+
+    {%- assign current_year = 'now' | date: '%Y' -%}
+    <div class="site-footer__legal">
+      <p>
+        {{ settings.legal_company_name }} — SIRET {{ settings.legal_siret }} — {{ settings.legal_address }}
+      </p>
+      <p>{{ 'footer.copyright' | t: year: current_year, shop: shop.name }}</p>
+    </div>
+  </div>
+</footer>
+
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Pied de page",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu légal (CGV, mentions légales…)",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Accroche de marque",
+      "default": "Routine bien-être naturelle, formulée en Europe."
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Téléphone (optionnel)"
+    }
+  ]
+}
+{% endschema %}

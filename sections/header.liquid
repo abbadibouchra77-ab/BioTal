@@ -1,0 +1,129 @@
+{%- liquid
+  assign menu = section.settings.menu
+-%}
+<header class="site-header" data-header>
+  {%- if section.settings.announcement_text_1 != blank or section.settings.announcement_text_2 != blank -%}
+    <div class="site-header__announcement">
+      <div class="page-width site-header__announcement-inner">
+        {%- if section.settings.announcement_text_1 != blank -%}
+          <p>{%- render 'icon', name: 'truck', size: 14 -%} {{ section.settings.announcement_text_1 }}</p>
+        {%- endif -%}
+        {%- if section.settings.announcement_text_2 != blank -%}
+          <p>{%- render 'icon', name: 'shield', size: 14 -%} {{ section.settings.announcement_text_2 }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="site-header__main">
+    <div class="page-width site-header__row">
+      <button type="button" class="site-header__nav-toggle" data-mobile-nav-toggle aria-expanded="false" aria-controls="MobileNav">
+        {%- render 'icon', name: 'menu', size: 22 -%}
+        <span class="visually-hidden">{{ 'general.accessibility.open_menu' | t }}</span>
+      </button>
+
+      <a href="{{ routes.root_url }}" class="site-header__logo">
+        {%- if settings.logo -%}
+          <img
+            src="{{ settings.logo | image_url: width: 300 }}"
+            srcset="{{ settings.logo | image_url: width: 150 }} 150w, {{ settings.logo | image_url: width: 300 }} 300w"
+            alt="{{ shop.name }}"
+            width="{{ settings.logo_width }}"
+            height="{{ settings.logo_width | divided_by: settings.logo.aspect_ratio | default: settings.logo_width }}"
+            style="width: {{ settings.logo_width }}px; height: auto;"
+            loading="eager"
+            fetchpriority="high"
+          >
+        {%- else -%}
+          <span class="site-header__logo-text">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+
+      {%- if menu != blank -%}
+        <nav class="site-header__nav" aria-label="{{ 'general.accessibility.menu' | t }}">
+          <ul>
+            {%- for link in menu.links -%}
+              <li class="{% if link.links != blank %}has-dropdown{% endif %}">
+                <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>{{ link.title }}</a>
+                {%- if link.links != blank -%}
+                  <ul class="site-header__dropdown">
+                    {%- for child in link.links -%}
+                      <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </nav>
+      {%- endif -%}
+
+      <div class="site-header__icons">
+        {%- if section.settings.show_search -%}
+          <a href="{{ routes.search_url }}" class="site-header__icon-link">
+            {%- render 'icon', name: 'search', size: 20 -%}
+            <span class="visually-hidden">{{ 'general.accessibility.search' | t }}</span>
+          </a>
+        {%- endif -%}
+        <a href="{{ routes.cart_url }}" class="site-header__icon-link site-header__cart-link" data-cart-icon-link {% if settings.cart_type == 'drawer' %}data-open-cart-drawer{% endif %}>
+          {%- render 'icon', name: 'cart', size: 20 -%}
+          <span class="visually-hidden">{{ 'general.accessibility.cart' | t }}</span>
+          <span class="site-header__cart-count {% if cart.item_count == 0 %}is-empty{% endif %}" data-cart-count>{{ cart.item_count }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-header__mobile-nav" id="MobileNav">
+    <nav aria-label="{{ 'general.accessibility.menu' | t }}">
+      <ul>
+        {%- for link in menu.links -%}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+            {%- if link.links != blank -%}
+              <ul class="site-header__mobile-dropdown">
+                {%- for child in link.links -%}
+                  <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+{{ 'section-header.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "En-tête",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu de navigation",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Afficher la recherche",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text_1",
+      "label": "Mention de réassurance 1",
+      "default": "Livraison incluse en France métropolitaine"
+    },
+    {
+      "type": "text",
+      "id": "announcement_text_2",
+      "label": "Mention de réassurance 2",
+      "default": "Satisfait ou remboursé sous 30 jours"
+    }
+  ]
+}
+{% endschema %}

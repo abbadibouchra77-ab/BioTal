@@ -95,14 +95,12 @@
     {{ 'general.accessibility.skip_to_content' | t }}
   </a>
 
-  {%- section 'announcement-bar' -%}
   {%- section 'header' -%}
 
   <main id="MainContent" role="main">
     {{ content_for_layout }}
   </main>
 
-  {%- section 'newsletter' -%}
   {%- section 'footer' -%}
 
   {%- if settings.cart_type == 'drawer' -%}

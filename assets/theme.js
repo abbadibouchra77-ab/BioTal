@@ -130,6 +130,14 @@ window.BioTal = window.BioTal || {};
     });
   });
 
+  subscribe(EVENTS.cartUpdated, function (data) {
+    var countEls = document.querySelectorAll("[data-cart-count]");
+    countEls.forEach(function (el) {
+      el.textContent = data.cart.item_count;
+      el.classList.toggle("is-empty", data.cart.item_count === 0);
+    });
+  });
+
   window.BioTal.subscribe = subscribe;
   window.BioTal.publish = publish;
   window.BioTal.EVENTS = EVENTS;
