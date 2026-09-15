@@ -13,7 +13,11 @@
       "type": "hero",
       "settings": {
         "badge_text": "Offre de lancement",
-        "button_label": "Découvrir Magnesium 4-fold Complex"
+        "heading": "",
+        "subheading": "",
+        "button_label": "Découvrir Magnesium 4-fold Complex",
+        "button_link": "",
+        "image": "shopify://shop_images/dfd27e67-042a-43fb-9033-395f14234ad9.jpg"
       }
     },
     "trust-bar": {
@@ -62,16 +66,118 @@
     },
     "featured-product": {
       "type": "featured-product",
-      "settings": {}
-    },
-    "bundle-highlight": {
-      "type": "bundle-highlight",
-      "settings": {}
-    },
-    "product-grid": {
-      "type": "product-grid",
       "settings": {
-        "center_heading": true
+        "product": "turmeric-piperine-60-capsules",
+        "text": ""
+      }
+    },
+    "product_grid_9RkMYC": {
+      "type": "product-grid",
+      "blocks": {
+        "product_kyLDYf": {
+          "type": "product",
+          "settings": {
+            "product": "magnesium-4-fold-complex-60-vegan-tablets"
+          }
+        },
+        "product_L44W3m": {
+          "type": "product",
+          "settings": {
+            "product": "vitamin-d3-k2-1-700-drops-1-000-i-u-50ml"
+          }
+        },
+        "product_dmaWFE": {
+          "type": "product",
+          "settings": {
+            "product": "turmeric-piperine-60-capsules"
+          }
+        },
+        "product_3gwRCC": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_iKmTfW": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_7fpjKp": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_n6eLhV": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_WLdqbW": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_kyLDYf",
+        "product_L44W3m",
+        "product_dmaWFE",
+        "product_3gwRCC",
+        "product_iKmTfW",
+        "product_7fpjKp",
+        "product_n6eLhV",
+        "product_WLdqbW"
+      ],
+      "name": "Grille produits",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "center_heading": true,
+        "view_all_link": ""
+      }
+    },
+    "image_text_3CeNUm": {
+      "type": "image-text",
+      "blocks": {
+        "point_3XfbzU": {
+          "type": "point",
+          "settings": {
+            "text": "Formulé et fabriqué en Europe"
+          }
+        },
+        "point_Lx4riX": {
+          "type": "point",
+          "settings": {
+            "text": "Ingrédients sélectionnés avec soin"
+          }
+        },
+        "point_JDkVTj": {
+          "type": "point",
+          "settings": {
+            "text": "Routine simple, sans excès"
+          }
+        }
+      },
+      "block_order": [
+        "point_3XfbzU",
+        "point_Lx4riX",
+        "point_JDkVTj"
+      ],
+      "name": "Image et texte",
+      "settings": {
+        "image": "shopify://shop_images/Duo_serenite.png",
+        "image_position": "left",
+        "background": "cream",
+        "eyebrow": "Le duo qui accompagne vos soirées",
+        "heading": "Duo Sérénité : Magnésium 4-en-1 + Vitamine D3 & K2",
+        "text": "<p>Le magnésium 4-en-1 favorise la détente musculaire et nerveuse, la vitamine D3 & K2 soutient votre vitalité au quotidien. Deux formules complémentaires, pensées en Europe pour accompagner vos soirées et vos matins.</p>",
+        "button_label": "Découvrir le Duo Sérénité",
+        "button_link": "https://biotal.fr/products/duo-serenite-magnesium-4-en-1-vitamine-d3-k2"
       }
     },
     "how-it-works": {
@@ -104,11 +210,17 @@
         "step-2",
         "step-3"
       ],
-      "settings": {}
+      "settings": {
+        "heading": "",
+        "subheading": ""
+      }
     },
     "reviews": {
       "type": "reviews",
-      "settings": {}
+      "disabled": true,
+      "settings": {
+        "heading": ""
+      }
     },
     "faq": {
       "type": "faq",
@@ -140,15 +252,17 @@
         "q-2",
         "q-3"
       ],
-      "settings": {}
+      "settings": {
+        "heading": ""
+      }
     }
   },
   "order": [
     "hero",
     "trust-bar",
     "featured-product",
-    "bundle-highlight",
-    "product-grid",
+    "product_grid_9RkMYC",
+    "image_text_3CeNUm",
     "how-it-works",
     "reviews",
     "faq"
