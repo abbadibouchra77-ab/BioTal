@@ -21,13 +21,14 @@
     "type_body_font": "inter",
     "type_header_scale": 100,
     "type_body_scale": 100,
+    "logo": "shopify://shop_images/Logo_BioTal73-removebg-preview.png",
     "logo_width": 150,
     "page_width": 1320,
     "spacing_sections": 64,
     "radius_base": 12,
     "cart_type": "drawer",
     "cart_show_bundle_upsell": true,
-    "cart_free_shipping_text": "Livraison offerte en France métropolitaine",
+    "cart_free_shipping_threshold": 50,
     "reviews_enable": false,
     "reviews_namespace": "reviews",
     "legal_company_name": "BioTal SAS",
@@ -38,11 +39,26 @@
       "header": {
         "type": "header",
         "settings": {
+          "menu": "main-menu",
+          "show_search": true,
           "announcement_text_1": "Livraison gratuite dès 50€ d'achat en France métropolitaine",
           "announcement_text_2": "Satisfait ou remboursé sous 14 jours"
         }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "menu": "footer",
+          "tagline": "Routine bien-être naturelle, formulée en Europe.",
+          "phone": ""
+        }
+      },
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {}
       }
-    }
+    },
+    "content_for_index": []
   },
   "presets": {
     "BioTal — Lancement": {
