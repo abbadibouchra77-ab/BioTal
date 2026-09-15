@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "settings": {
     "colors": {
@@ -47,7 +56,8 @@
       "bundle_trigger_product": "Produit déclencheur",
       "bundle_trigger_product_info": "Lorsque ce produit est dans le panier (et que le bundle n'y est pas), une suggestion de bundle s'affiche.",
       "bundle_product": "Produit bundle à suggérer",
-      "free_shipping_text": "Texte de livraison offerte"
+      "free_shipping_threshold": "Seuil de livraison offerte (€)",
+      "free_shipping_threshold_info": "Montant à partir duquel la livraison devient gratuite dans le panier. Doit correspondre au seuil configuré dans Paramètres > Livraison et expédition."
     },
     "reviews": {
       "name": "Avis clients",

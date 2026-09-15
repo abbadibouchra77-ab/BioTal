@@ -210,10 +210,11 @@
         "label": "t:settings.cart.bundle_product"
       },
       {
-        "type": "text",
-        "id": "cart_free_shipping_text",
-        "label": "t:settings.cart.free_shipping_text",
-        "default": "Livraison offerte en France métropolitaine"
+        "type": "number",
+        "id": "cart_free_shipping_threshold",
+        "label": "t:settings.cart.free_shipping_threshold",
+        "info": "t:settings.cart.free_shipping_threshold_info",
+        "default": 50
       }
     ]
   },
