@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "colors_primary": "#1E4638",
@@ -24,7 +33,16 @@
     "legal_company_name": "BioTal SAS",
     "legal_siret": "000 000 000 00000",
     "legal_address": "Adresse à compléter, France",
-    "legal_email": "contact@biotal.fr"
+    "legal_email": "contact@biotal.fr",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "announcement_text_1": "",
+          "announcement_text_2": "Satisfait ou remboursé sous 30 jours"
+        }
+      }
+    }
   },
   "presets": {
     "BioTal — Lancement": {
