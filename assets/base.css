@@ -200,12 +200,12 @@ summary:focus-visible,
 }
 
 .btn--accent {
-  background: var(--color-accent);
+  background: #D9D9D9;
   color: var(--color-text);
 }
 
 .btn--accent:hover {
-  background: var(--color-accent-dark);
+  background: #C4C4C4;
 }
 
 .btn--outline {
