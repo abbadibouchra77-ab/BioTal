@@ -1,0 +1,290 @@
+.product__inner {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 990px) {
+  .product__inner {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+/* Galerie */
+.product__main-media {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-bg-secondary);
+  aspect-ratio: 1 / 1;
+}
+
+.product__main-media-item {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: zoom-in;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.product__main-media-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product__main-media-item.is-zoomed img {
+  transform: scale(1.7);
+  cursor: zoom-out;
+}
+
+.product__zoom-hint {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  background: rgba(26, 26, 26, 0.55);
+  color: var(--color-white);
+  font-size: 0.7rem;
+  padding: 0.3em 0.7em;
+  border-radius: 999px;
+}
+
+.product__placeholder {
+  width: 100%;
+  height: 100%;
+  color: var(--color-primary);
+  opacity: 0.3;
+}
+
+.product__thumbs {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.85rem;
+  overflow-x: auto;
+}
+
+.product__thumb {
+  flex-shrink: 0;
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: calc(var(--radius) / 1.5);
+  overflow: hidden;
+  border: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  background: var(--color-bg-secondary);
+}
+
+.product__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product__thumb.is-active {
+  border-color: var(--color-primary);
+}
+
+/* Infos */
+.product__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.product__title {
+  margin: 0.2em 0 0;
+}
+
+.product__price .price {
+  font-size: 1.5rem;
+  margin: 0.15rem 0;
+}
+
+.product-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.product-form__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.product-form__option label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+}
+
+.product-form__option select {
+  width: 100%;
+  padding: 0.75em 1em;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-bg-secondary);
+  background: var(--color-white);
+  font-size: 1rem;
+}
+
+.product-form__purchase-type {
+  border: 1px solid var(--color-bg-secondary);
+  border-radius: var(--radius);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.purchase-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.product-form__selling-plan-select {
+  margin-left: 1.9rem;
+  padding: 0.5em 0.8em;
+  border-radius: calc(var(--radius) / 1.5);
+  border: 1px solid var(--color-bg-secondary);
+}
+
+.product-form__quantity label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+}
+
+.quantity-selector {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-bg-secondary);
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: fit-content;
+}
+
+.quantity-selector__btn {
+  background: var(--color-bg-secondary);
+  border: none;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.quantity-selector input {
+  width: 3.5rem;
+  border: none;
+  text-align: center;
+  font-size: 1rem;
+  -moz-appearance: textfield;
+}
+
+.quantity-selector input::-webkit-outer-spin-button,
+.quantity-selector input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.product-form__submit {
+  margin-top: 0.25rem;
+}
+
+/* Accordéons & allergènes */
+.product__accordions {
+  width: 100%;
+  margin-top: 1rem;
+  border-top: 1px solid var(--color-bg-secondary);
+}
+
+.product__allergens {
+  width: 100%;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.product__allergens-heading {
+  font-size: 1rem;
+  margin-bottom: 0.5em;
+}
+
+.product__allergens-text {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.product__allergens-text p:last-child {
+  margin-bottom: 0;
+}
+
+.product__description {
+  width: 100%;
+  margin-top: 1.25rem;
+  color: var(--color-text-muted);
+}
+
+/* Barre d'achat sticky mobile */
+.product-sticky-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-bg-secondary);
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.08);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.product-sticky-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.75rem;
+}
+
+.product-sticky-bar__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.product-sticky-bar__title {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-sticky-bar__price {
+  font-weight: 700;
+}
+
+@media screen and (min-width: 990px) {
+  .product-sticky-bar {
+    display: none;
+  }
+}

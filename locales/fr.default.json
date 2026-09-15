@@ -165,6 +165,8 @@
       "sold_out": "Épuisé",
       "unavailable": "Indisponible",
       "quantity": "Quantité",
+      "quantity_decrease": "Diminuer la quantité",
+      "quantity_increase": "Augmenter la quantité",
       "choose_options": "Choisir les options",
       "view_details": "Voir le produit"
     },

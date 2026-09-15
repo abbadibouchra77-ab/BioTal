@@ -1,0 +1,220 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+-%}
+<product-page class="product section" data-section-id="{{ section.id }}" data-product-handle="{{ product.handle }}">
+  <div class="page-width">
+    <div class="product__inner">
+      {%- comment -%} ------- Galerie ------- {%- endcomment -%}
+      <div class="product__gallery">
+        <div class="product__main-media">
+          {%- for media in product.media -%}
+            <button
+              type="button"
+              class="product__main-media-item {% if forloop.first %}is-active{% endif %}"
+              data-media-id="{{ media.id }}"
+              data-zoom-src="{{ media | image_url: width: 1600 }}"
+              {% unless forloop.first %}hidden{% endunless %}
+            >
+              <img
+                src="{{ media | image_url: width: 800 }}"
+                srcset="{{ media | image_url: width: 500 }} 500w, {{ media | image_url: width: 800 }} 800w, {{ media | image_url: width: 1100 }} 1100w"
+                sizes="(min-width: 990px) 45vw, 100vw"
+                alt="{{ media.alt | default: product.title | escape }}"
+                width="{{ media.width }}"
+                height="{{ media.height }}"
+                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                {% if forloop.first %}fetchpriority="high"{% endif %}
+              >
+              <span class="product__zoom-hint">{{ 'products.gallery.zoom' | t }}</span>
+            </button>
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'product__placeholder' }}
+          {%- endfor -%}
+        </div>
+
+        {%- if product.media.size > 1 -%}
+          <div class="product__thumbs" role="tablist" aria-label="{{ product.title | escape }}">
+            {%- for media in product.media -%}
+              <button
+                type="button"
+                class="product__thumb {% if forloop.first %}is-active{% endif %}"
+                data-thumb-for="{{ media.id }}"
+                role="tab"
+                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+              >
+                <img
+                  src="{{ media | image_url: width: 150 }}"
+                  alt="{{ 'products.gallery.thumbnail' | t: index: forloop.index }}"
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                >
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} ------- Informations & achat ------- {%- endcomment -%}
+      <div class="product__info">
+        {%- if product.tags contains 'lancement' -%}
+          <span class="badge badge--accent">{{ 'products.badges.launch' | t }}</span>
+        {%- endif -%}
+
+        <h1 class="product__title">{{ product.title }}</h1>
+
+        {%- render 'rating-stars', product: product -%}
+
+        <div class="product__price" data-product-price>
+          {%- render 'price', product: product, variant: current_variant -%}
+        </div>
+
+        {%- render 'stock-indicator', variant: current_variant -%}
+
+        {%- form 'product', product, id: 'ProductForm', class: 'product-form', data-product-form: '' -%}
+          <input type="hidden" name="id" value="{{ current_variant.id }}" data-product-form-variant-id>
+
+          {%- if product.has_only_default_variant == false -%}
+            <div class="product-form__options">
+              {%- for option in product.options_with_values -%}
+                <div class="product-form__option">
+                  <label for="ProductOption-{{ option.position }}">{{ option.name }}</label>
+                  <select id="ProductOption-{{ option.position }}" data-option-position="{{ option.position }}" data-product-option>
+                    {%- for value in option.values -%}
+                      <option value="{{ value | escape }}" {% if value == option.selected_value %}selected{% endif %}>{{ value }}</option>
+                    {%- endfor -%}
+                  </select>
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+
+          {%- if product.selling_plan_groups.size > 0 -%}
+            <fieldset class="product-form__purchase-type">
+              <legend class="visually-hidden">{{ 'products.price.purchase_one_time' | t }} / {{ 'products.price.purchase_subscription' | t }}</legend>
+              <label class="purchase-option">
+                <input type="radio" name="purchase_option" value="onetime" checked data-purchase-option>
+                <span>{{ 'products.price.purchase_one_time' | t }}</span>
+              </label>
+              {%- for group in product.selling_plan_groups -%}
+                <label class="purchase-option">
+                  <input type="radio" name="purchase_option" value="{{ group.id }}" data-purchase-option>
+                  <span>{{ 'products.price.purchase_subscription' | t }}{% if group.selling_plans.size == 1 %} — {{ group.selling_plans.first.name }}{% endif %}</span>
+                </label>
+                {%- if group.selling_plans.size > 1 -%}
+                  <select class="product-form__selling-plan-select" data-selling-plan-select data-group-id="{{ group.id }}" hidden>
+                    {%- for plan in group.selling_plans -%}
+                      <option value="{{ plan.id }}">{{ plan.name }}</option>
+                    {%- endfor -%}
+                  </select>
+                {%- endif -%}
+              {%- endfor -%}
+              <input type="hidden" name="selling_plan" data-selling-plan-input>
+            </fieldset>
+          {%- endif -%}
+
+          <div class="product-form__quantity">
+            <label for="ProductQuantity">{{ 'products.form.quantity' | t }}</label>
+            <div class="quantity-selector">
+              <button type="button" class="quantity-selector__btn" data-quantity-decrease aria-label="{{ 'products.form.quantity_decrease' | t }}">
+                {%- render 'icon', name: 'minus', size: 14 -%}
+              </button>
+              <input type="number" id="ProductQuantity" name="quantity" value="1" min="1" inputmode="numeric" data-quantity-input>
+              <button type="button" class="quantity-selector__btn" data-quantity-increase aria-label="{{ 'products.form.quantity_increase' | t }}">
+                {%- render 'icon', name: 'plus', size: 14 -%}
+              </button>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn--primary btn--full btn--lg product-form__submit"
+            data-product-form-submit
+            {% unless current_variant.available %}disabled aria-disabled="true"{% endunless %}
+          >
+            <span data-product-form-submit-label>
+              {%- if current_variant.available -%}
+                {{ 'products.form.add_to_cart' | t }}
+              {%- else -%}
+                {{ 'products.form.sold_out' | t }}
+              {%- endif -%}
+            </span>
+          </button>
+        {%- endform -%}
+
+        <div class="product__accordions">
+          {%- assign composition = product.metafields.custom.composition -%}
+          {%- assign dosage = product.metafields.custom.dosage -%}
+          {%- assign usage = product.metafields.custom.usage -%}
+          {%- if composition != blank or dosage != blank -%}
+            {%- capture composition_content -%}
+              {%- if composition != blank -%}{{ composition.value }}{%- endif -%}
+              {%- if dosage != blank -%}{{ dosage.value }}{%- endif -%}
+            {%- endcapture -%}
+            {%- render 'accordion-item', title: 'products.accordion.composition' | t, content: composition_content, group: 'product-' | append: section.id -%}
+          {%- endif -%}
+          {%- if usage != blank -%}
+            {%- render 'accordion-item', title: 'products.accordion.usage' | t, content: usage.value, group: 'product-' | append: section.id -%}
+          {%- endif -%}
+          {%- render 'accordion-item', title: 'products.accordion.shipping' | t, content: section.settings.shipping_text, group: 'product-' | append: section.id -%}
+        </div>
+
+        <div class="product__allergens">
+          <h2 class="product__allergens-heading">{{ 'products.allergens.heading' | t }}</h2>
+          {%- assign allergens = product.metafields.custom.allergens -%}
+          <div class="product__allergens-text">
+            {%- if allergens != blank -%}
+              {{ allergens.value }}
+            {%- else -%}
+              <p>{{ 'products.allergens.default_text' | t }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+
+        {%- if product.description != blank -%}
+          <div class="product__description">
+            {{ product.description }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} ------- Barre d'achat sticky mobile ------- {%- endcomment -%}
+  <div class="product-sticky-bar" data-product-sticky-bar hidden>
+    <div class="page-width product-sticky-bar__inner">
+      <div class="product-sticky-bar__info">
+        <span class="product-sticky-bar__title">{{ product.title }}</span>
+        <span class="product-sticky-bar__price" data-sticky-bar-price>{{ current_variant.price | money }}</span>
+      </div>
+      <button type="button" class="btn btn--primary" data-sticky-bar-submit {% unless current_variant.available %}disabled{% endunless %}>
+        {%- if current_variant.available -%}
+          {{ 'products.form.add_to_cart' | t }}
+        {%- else -%}
+          {{ 'products.form.sold_out' | t }}
+        {%- endif -%}
+      </button>
+    </div>
+  </div>
+
+  <script type="application/json" data-product-json>
+    {{ product.variants | json }}
+  </script>
+</product-page>
+
+{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-main-product.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Page produit",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "shipping_text",
+      "label": "Texte livraison & retours",
+      "default": "<p>Expédition depuis l'Europe vers la France. Vous disposez de 30 jours pour changer d'avis (voir notre politique de retour).</p>"
+    }
+  ]
+}
+{% endschema %}

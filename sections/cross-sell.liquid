@@ -1,0 +1,47 @@
+<product-recommendations
+  class="cross-sell section"
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.count }}&intent=complementary"
+>
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <div class="page-width">
+      <div class="section-header">
+        <h2>
+          {%- if section.settings.heading != blank -%}
+            {{ section.settings.heading }}
+          {%- else -%}
+            {{ 'sections.cross_sell.default_heading' | t }}
+          {%- endif -%}
+        </h2>
+      </div>
+      <div class="grid grid--4">
+        {%- for recommended_product in recommendations.products -%}
+          {%- render 'product-card', product: recommended_product -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</product-recommendations>
+
+<script src="{{ 'section-cross-sell.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Complète ta routine",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre"
+    },
+    {
+      "type": "range",
+      "id": "count",
+      "label": "Nombre de produits",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    }
+  ]
+}
+{% endschema %}

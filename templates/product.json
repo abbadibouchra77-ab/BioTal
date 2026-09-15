@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {}
+    },
+    "trust-bar": {
+      "type": "trust-bar",
+      "blocks": {
+        "item-1": { "type": "item", "settings": { "icon": "truck", "title": "Livraison incluse", "text": "Expédiée depuis l'Europe vers la France" } },
+        "item-2": { "type": "item", "settings": { "icon": "shield", "title": "Paiement sécurisé", "text": "Vos données sont protégées" } },
+        "item-3": { "type": "item", "settings": { "icon": "check-circle", "title": "Satisfait ou remboursé", "text": "30 jours pour changer d'avis" } },
+        "item-4": { "type": "item", "settings": { "icon": "leaf", "title": "Fabriqué en Europe", "text": "Standards de qualité européens" } }
+      },
+      "block_order": ["item-1", "item-2", "item-3", "item-4"]
+    },
+    "cross-sell": {
+      "type": "cross-sell",
+      "settings": {
+        "count": 4
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "heading": "Questions sur ce produit"
+      },
+      "blocks": {
+        "q-1": {
+          "type": "question",
+          "settings": {
+            "question": "Comment intégrer ce produit à ma routine ?",
+            "answer": "<p>Reportez-vous au mode d'emploi ci-dessus : la régularité est plus importante que la quantité.</p>"
+          }
+        },
+        "q-2": {
+          "type": "question",
+          "settings": {
+            "question": "Puis-je le combiner avec d'autres produits BioTal ?",
+            "answer": "<p>Oui, nos produits sont pensés pour se compléter au sein d'une même routine. Voir la section « Complétez votre routine » ci-dessus.</p>"
+          }
+        }
+      },
+      "block_order": ["q-1", "q-2"]
+    }
+  },
+  "order": ["main", "trust-bar", "cross-sell", "faq"]
+}
