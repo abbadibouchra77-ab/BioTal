@@ -88,6 +88,20 @@
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
 
   {{ content_for_header }}
+
+  {%- comment -%}
+    Namespace global BioTal + Web Components partagés (quick-add). Chargés en <head> avec
+    defer pour s'exécuter AVANT les scripts de section (eux aussi en defer, exécutés dans
+    l'ordre du document) : les sections qui s'abonnent à window.BioTal dès leur
+    connectedCallback (ex. le tiroir panier) ont ainsi la garantie que le namespace existe déjà.
+  {%- endcomment -%}
+  <script>
+    window.Shopify = window.Shopify || {};
+    window.Shopify.routes = { root: {{ routes.root_url | json }} };
+    window.themeMoneyFormat = {{ shop.money_format | json }};
+  </script>
+  <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
 </head>
 
 <body class="template-{{ request.page_type }}">
@@ -106,13 +120,5 @@
   {%- if settings.cart_type == 'drawer' -%}
     {%- section 'cart-drawer' -%}
   {%- endif -%}
-
-  <script>
-    window.Shopify = window.Shopify || {};
-    window.Shopify.routes = { root: {{ routes.root_url | json }} };
-    window.themeMoneyFormat = {{ shop.money_format | json }};
-  </script>
-  <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
 </body>
 </html>
