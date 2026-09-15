@@ -37,6 +37,34 @@
           {%- endif -%}
         </div>
 
+        {%- if section.blocks.size > 0 -%}
+          <ul class="bundle-highlight__included">
+            {%- for block in section.blocks -%}
+              {%- if block.settings.product != blank -%}
+                <li {{ block.shopify_attributes }}>
+                  <span class="bundle-highlight__included-media">
+                    {%- if block.settings.product.featured_media -%}
+                      <img
+                        src="{{ block.settings.product.featured_media | image_url: width: 100 }}"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy"
+                      >
+                    {%- else -%}
+                      {{ 'product-1' | placeholder_svg_tag: 'bundle-highlight__included-placeholder' }}
+                    {%- endif -%}
+                  </span>
+                  <span class="bundle-highlight__included-text">
+                    {{ block.settings.product.title }}
+                    {%- if block.settings.quantity > 1 %} × {{ block.settings.quantity }}{% endif -%}
+                  </span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
         {%- if product -%}
           {%- assign variant = product.selected_or_first_available_variant -%}
           <div class="bundle-highlight__prices">
@@ -80,6 +108,26 @@
       "label": "Sous-titre"
     }
   ],
+  "blocks": [
+    {
+      "type": "included_product",
+      "name": "Produit inclus",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Produit"
+        },
+        {
+          "type": "number",
+          "id": "quantity",
+          "label": "Quantité",
+          "default": 1
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
   "presets": [
     {
       "name": "Bundle vedette"

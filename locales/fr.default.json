@@ -147,6 +147,9 @@
     "newsletter": {
       "default_heading": "Ne manquez rien",
       "default_subheading": "Lancements, conseils routine et offres exclusives."
+    },
+    "video": {
+      "play": "Lire la vidéo"
     }
   },
   "products": {

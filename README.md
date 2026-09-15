@@ -130,6 +130,17 @@ produits, Comment ça marche, Avis clients, FAQ.
 quantité), accordéons composition/dosage/mode d'emploi, allergènes (toujours visible),
 bandeau de réassurance, cross-sell dynamique, FAQ produit.
 
+**Sections additionnelles** (disponibles via « Ajouter une section » sur n'importe quelle
+page, non incluses par défaut dans l'accueil) :
+
+- **Image et texte** : bannière polyvalente (image à gauche/droite, points clés en liste,
+  bouton), utile pour raconter la marque, un ingrédient ou un engagement qualité.
+- **Vidéo** : vidéo hébergée par Shopify (recommandé, aucune dépendance externe) ou vidéo
+  externe (YouTube/Vimeo) chargée uniquement au clic (facade) pour ne jamais pénaliser le LCP
+  — utile pour relayer du contenu TikTok/Instagram.
+- **Bundle vedette enrichi** : la section peut désormais lister le détail des produits inclus
+  dans le bundle (miniature + quantité), en plus du comparatif prix normal / prix bundle.
+
 ## Contenu à compléter avant mise en ligne
 
 Le thème est fonctionnel mais utilise volontairement des **placeholders clairement

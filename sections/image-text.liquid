@@ -1,0 +1,137 @@
+<section class="image-text section image-text--{{ section.settings.image_position }} image-text--{{ section.settings.background }}" id="shopify-section-{{ section.id }}">
+  <div class="page-width">
+    <div class="image-text__inner">
+      <div class="image-text__media">
+        {%- if section.settings.image -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 900 }}"
+            srcset="{{ section.settings.image | image_url: width: 500 }} 500w, {{ section.settings.image | image_url: width: 800 }} 800w, {{ section.settings.image | image_url: width: 1100 }} 1100w"
+            sizes="(min-width: 990px) 45vw, 100vw"
+            alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+            loading="lazy"
+          >
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'image-text__placeholder' }}
+        {%- endif -%}
+      </div>
+
+      <div class="image-text__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="section-header__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2>{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="image-text__text">{{ section.settings.text }}</div>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="image-text__list">
+            {%- for block in section.blocks -%}
+              <li {{ block.shopify_attributes }}>
+                {%- render 'icon', name: 'check-circle', size: 18 -%}
+                <span>{{ block.settings.text }}</span>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link | default: '#' }}" class="btn btn--primary">
+            {{ section.settings.button_label }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ 'section-image-text.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Image et texte",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Position de l'image",
+      "options": [
+        { "value": "left", "label": "À gauche" },
+        { "value": "right", "label": "À droite" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Fond de section",
+      "options": [
+        { "value": "cream", "label": "Crème (défaut)" },
+        { "value": "sage", "label": "Vert sauge clair" }
+      ],
+      "default": "cream"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Petit texte au-dessus du titre"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Une routine pensée pour durer"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texte",
+      "default": "<p>Formulée en Europe, chaque référence BioTal est pensée pour s'intégrer simplement à votre quotidien.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Point clé",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Formulé et fabriqué en Europe"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Image et texte",
+      "blocks": [
+        { "type": "point", "settings": { "text": "Formulé et fabriqué en Europe" } },
+        { "type": "point", "settings": { "text": "Ingrédients sélectionnés avec soin" } },
+        { "type": "point", "settings": { "text": "Routine simple, sans excès" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
