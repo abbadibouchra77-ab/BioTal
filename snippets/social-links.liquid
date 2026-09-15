@@ -1,0 +1,22 @@
+{%- comment -%} Liens réseaux sociaux configurés dans les réglages du thème. {%- endcomment -%}
+{%- assign socials = 'instagram,tiktok,facebook,pinterest' | split: ',' -%}
+{%- assign has_social = false -%}
+{%- for s in socials -%}
+  {%- if settings['social_' | append: s] != blank -%}{%- assign has_social = true -%}{%- endif -%}
+{%- endfor -%}
+{%- if has_social -%}
+  <ul class="social-links" aria-label="{{ 'general.social.follow_us' | t }}">
+    {%- if settings.social_instagram != blank -%}
+      <li><a href="{{ settings.social_instagram }}" target="_blank" rel="noopener" class="social-links__link"><span class="visually-hidden">Instagram</span>{%- render 'icon', name: 'instagram', size: 20 -%}</a></li>
+    {%- endif -%}
+    {%- if settings.social_tiktok != blank -%}
+      <li><a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener" class="social-links__link"><span class="visually-hidden">TikTok</span>{%- render 'icon', name: 'tiktok', size: 20 -%}</a></li>
+    {%- endif -%}
+    {%- if settings.social_facebook != blank -%}
+      <li><a href="{{ settings.social_facebook }}" target="_blank" rel="noopener" class="social-links__link"><span class="visually-hidden">Facebook</span>{%- render 'icon', name: 'facebook', size: 20 -%}</a></li>
+    {%- endif -%}
+    {%- if settings.social_pinterest != blank -%}
+      <li><a href="{{ settings.social_pinterest }}" target="_blank" rel="noopener" class="social-links__link"><span class="visually-hidden">Pinterest</span>{%- render 'icon', name: 'pinterest', size: 20 -%}</a></li>
+    {%- endif -%}
+  </ul>
+{%- endif -%}

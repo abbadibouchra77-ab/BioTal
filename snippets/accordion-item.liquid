@@ -1,0 +1,17 @@
+{%- comment -%}
+  Élément d'accordéon accessible, basé sur <details>/<summary> natif (clavier + lecteur d'écran
+  gérés nativement, aucun JS requis). L'attribut "name" (navigateurs récents) garantit qu'une
+  seule question reste ouverte à la fois au sein d'un même groupe.
+  Params : title, content (HTML), group (string), open (bool), id (string, optionnel)
+{%- endcomment -%}
+<details class="accordion-item" {% if id %}id="{{ id }}"{% endif %} {% if group %}name="{{ group }}"{% endif %} {% if open %}open{% endif %}>
+  <summary class="accordion-item__trigger">
+    <span class="accordion-item__title">{{ title }}</span>
+    <span class="accordion-item__icon" aria-hidden="true">
+      {%- render 'icon', name: 'plus', size: 16 -%}
+    </span>
+  </summary>
+  <div class="accordion-item__content">
+    {{ content }}
+  </div>
+</details>

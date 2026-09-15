@@ -1,0 +1,26 @@
+{%- comment -%}
+  Affiche un prix avec gestion du prix barré (promo) et du "à partir de" sur produit multi-variantes.
+  Params : product (obligatoire), variant (optionnel, sinon selected_or_first_available_variant), show_from (bool)
+{%- endcomment -%}
+{%- liquid
+  assign target = variant | default: product.selected_or_first_available_variant
+  assign show_from = show_from | default: false
+  assign on_sale = false
+  if target.compare_at_price > target.price
+    assign on_sale = true
+  endif
+-%}
+<div class="price {% if on_sale %}price--on-sale{% endif %}" {% if price_id %}id="{{ price_id }}"{% endif %}>
+  {%- if show_from and product.variants.size > 1 -%}
+    <span class="price__from visually-hidden">{{ 'products.price.from' | t }}</span>
+  {%- endif -%}
+  {%- if on_sale -%}
+    <span class="visually-hidden">{{ 'products.price.sale' | t }}</span>
+    <span class="price__sale">{{ target.price | money }}</span>
+    <span class="visually-hidden">{{ 'products.price.regular' | t }}</span>
+    <span class="price__compare">{{ target.compare_at_price | money }}</span>
+  {%- else -%}
+    <span class="visually-hidden">{{ 'products.price.regular' | t }}</span>
+    <span class="price__regular">{{ target.price | money }}</span>
+  {%- endif -%}
+</div>

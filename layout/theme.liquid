@@ -18,6 +18,8 @@
     <meta name="description" content="{{ page_description | escape }}">
   {%- endif -%}
 
+  {%- render 'meta-tags' -%}
+
   <title>
     {{ page_title }}
     {%- if current_tags %} &ndash; {{ 'general.meta.tagged_with' | t: tags: current_tags | join: ', ' }}{% endif -%}
@@ -82,6 +84,8 @@
   </style>
 
   {{ 'base.css' | asset_url | stylesheet_tag }}
+  {{ 'component-card.css' | asset_url | stylesheet_tag }}
+  {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
 
   {{ content_for_header }}
 </head>
@@ -111,5 +115,6 @@
     window.themeMoneyFormat = {{ shop.money_format | json }};
   </script>
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
 </body>
 </html>

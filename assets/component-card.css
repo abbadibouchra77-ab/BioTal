@@ -1,0 +1,121 @@
+/* Carte produit — utilisée en grille, cross-sell et résultats de recherche */
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.product-card__media-link {
+  display: block;
+}
+
+.product-card__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--color-bg-secondary);
+  overflow: hidden;
+}
+
+.product-card__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.25s ease;
+}
+
+.product-card__image--placeholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--color-primary);
+  opacity: 0.35;
+}
+
+.product-card__image--hover {
+  opacity: 0;
+}
+
+.product-card:hover .product-card__image--hover {
+  opacity: 1;
+}
+
+.product-card__badges {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  align-items: flex-start;
+}
+
+.product-card__body {
+  padding: 1rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.product-card__title {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.product-card__title a {
+  text-decoration: none;
+}
+
+.product-card__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.product-card__actions {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.btn--sm {
+  padding: 0.65em 1em;
+  font-size: 0.9rem;
+}
+
+/* Étoiles de notation */
+.rating-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--color-accent-dark);
+  font-size: 0.8rem;
+}
+
+.rating-stars__icons {
+  position: relative;
+  display: inline-flex;
+  color: var(--color-bg-secondary);
+}
+
+.rating-stars__icons-fill {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  overflow: hidden;
+  width: calc(var(--rating) / var(--scale) * 100%);
+  color: var(--color-accent);
+}
+
+.rating-stars__count {
+  color: var(--color-text-muted);
+}

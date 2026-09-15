@@ -1,0 +1,33 @@
+{%- comment -%}
+  Étoiles de notation, basées sur un métachamp de type "rating" (compatible avec la plupart des
+  applications d'avis : namespace configurable dans les réglages du thème). N'affiche rien si
+  aucune donnée n'est disponible — pas de fausse preuve sociale.
+  Params : product (obligatoire)
+{%- endcomment -%}
+{%- liquid
+  assign ns = settings.reviews_namespace | default: 'reviews'
+  assign rating_field = product.metafields[ns].rating
+  assign count_field = product.metafields[ns].rating_count
+-%}
+{%- if settings.reviews_enable and rating_field.value -%}
+  {%- liquid
+    assign rating_value = rating_field.value.rating
+    assign rating_scale = rating_field.value.scale_max | default: 5
+    assign count = count_field.value | default: 0
+  -%}
+  <div class="rating-stars" role="img" aria-label="{{ 'general.accessibility.star_rating_of' | t: rating: rating_value, max: rating_scale }}">
+    <span class="rating-stars__icons" aria-hidden="true" style="--rating: {{ rating_value }}; --scale: {{ rating_scale }};">
+      {%- for i in (1..rating_scale) -%}
+        {%- render 'icon', name: 'star-outline', size: 14 -%}
+      {%- endfor -%}
+      <span class="rating-stars__icons-fill">
+        {%- for i in (1..rating_scale) -%}
+          {%- render 'icon', name: 'star', size: 14 -%}
+        {%- endfor -%}
+      </span>
+    </span>
+    {%- if count > 0 -%}
+      <span class="rating-stars__count">({{ count }})</span>
+    {%- endif -%}
+  </div>
+{%- endif -%}

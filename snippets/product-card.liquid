@@ -1,0 +1,98 @@
+{%- comment -%}
+  Carte produit uniforme : image, badges, titre, avis, prix, ajout rapide.
+  Params : product (obligatoire), show_quick_add (bool, défaut true)
+{%- endcomment -%}
+{%- liquid
+  assign show_quick_add = show_quick_add | default: true
+  assign card_variant = product.selected_or_first_available_variant
+  assign on_sale = false
+  if card_variant.compare_at_price > card_variant.price
+    assign on_sale = true
+  endif
+  assign is_bundle = false
+  if product.tags contains 'bundle'
+    assign is_bundle = true
+  endif
+  assign is_launch = false
+  if product.tags contains 'lancement'
+    assign is_launch = true
+  endif
+-%}
+<article class="product-card">
+  <a href="{{ product.url }}" class="product-card__media-link" aria-hidden="true" tabindex="-1">
+    <div class="product-card__media">
+      {%- if product.featured_media -%}
+        {%- assign img = product.featured_media -%}
+        <img
+          class="product-card__image"
+          src="{{ img | image_url: width: 600 }}"
+          srcset="{{ img | image_url: width: 300 }} 300w, {{ img | image_url: width: 450 }} 450w, {{ img | image_url: width: 600 }} 600w, {{ img | image_url: width: 900 }} 900w"
+          sizes="(min-width: 990px) 25vw, (min-width: 700px) 33vw, 50vw"
+          alt="{{ img.alt | default: product.title | escape }}"
+          loading="lazy"
+          width="{{ img.width }}"
+          height="{{ img.height }}"
+        >
+        {%- if product.media[1] -%}
+          <img
+            class="product-card__image product-card__image--hover"
+            src="{{ product.media[1] | image_url: width: 600 }}"
+            srcset="{{ product.media[1] | image_url: width: 300 }} 300w, {{ product.media[1] | image_url: width: 600 }} 600w"
+            sizes="(min-width: 990px) 25vw, (min-width: 700px) 33vw, 50vw"
+            alt=""
+            loading="lazy"
+            width="{{ product.media[1].width }}"
+            height="{{ product.media[1].height }}"
+          >
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'product-card__image product-card__image--placeholder' }}
+      {%- endif -%}
+    </div>
+  </a>
+
+  <div class="product-card__badges">
+    {%- if is_launch -%}
+      <span class="badge badge--accent">{{ 'products.badges.launch' | t }}</span>
+    {%- endif -%}
+    {%- if is_bundle -%}
+      <span class="badge badge--primary">{{ 'products.badges.bundle' | t }}</span>
+    {%- endif -%}
+    {%- if on_sale -%}
+      <span class="badge badge--outline">-{{ card_variant.compare_at_price | minus: card_variant.price | times: 100.0 | divided_by: card_variant.compare_at_price | round }}%</span>
+    {%- endif -%}
+  </div>
+
+  <div class="product-card__body">
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+
+    {%- render 'rating-stars', product: product -%}
+
+    {%- render 'price', product: product, variant: card_variant, show_from: true -%}
+
+    {%- if show_quick_add -%}
+      <div class="product-card__actions">
+        {%- if product.variants.size > 1 or card_variant == nil -%}
+          <a href="{{ product.url }}" class="btn btn--outline btn--full btn--sm">
+            {{ 'products.form.choose_options' | t }}
+          </a>
+        {%- elsif card_variant.available -%}
+          <product-quick-add data-product-card>
+            <form method="post" action="/cart/add" class="product-card__quick-add-form">
+              <input type="hidden" name="id" value="{{ card_variant.id }}">
+              <button type="submit" class="btn btn--primary btn--full btn--sm" data-quick-add-submit>
+                <span data-quick-add-label>{{ 'products.form.add_to_cart' | t }}</span>
+              </button>
+            </form>
+          </product-quick-add>
+        {%- else -%}
+          <button type="button" class="btn btn--outline btn--full btn--sm" disabled aria-disabled="true">
+            {{ 'products.form.sold_out' | t }}
+          </button>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</article>

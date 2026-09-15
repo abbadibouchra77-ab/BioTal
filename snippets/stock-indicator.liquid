@@ -1,0 +1,18 @@
+{%- comment -%}
+  Indicateur de stock basé UNIQUEMENT sur l'inventaire réel Shopify — jamais de fausse urgence.
+  N'affiche un message "stock limité" que si le suivi d'inventaire est actif, la politique
+  n'autorise pas la vente hors stock, et la quantité restante est sous le seuil défini.
+  Params : variant (obligatoire), threshold (optionnel, défaut 10)
+{%- endcomment -%}
+{%- liquid
+  assign threshold = threshold | default: 10
+-%}
+{%- if variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny' -%}
+  {%- if variant.inventory_quantity <= 0 -%}
+    <p class="stock-indicator stock-indicator--out">{{ 'products.stock.out_of_stock' | t }}</p>
+  {%- elsif variant.inventory_quantity <= threshold -%}
+    <p class="stock-indicator stock-indicator--low">
+      {{ 'products.stock.low_stock' | t: count: variant.inventory_quantity }}
+    </p>
+  {%- endif -%}
+{%- endif -%}
