@@ -1,0 +1,290 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "BioTal",
+    "theme_version": "1.0.0",
+    "theme_author": "BioTal",
+    "theme_documentation_url": "https://github.com/",
+    "theme_support_url": "https://github.com/"
+  },
+  {
+    "name": "t:settings.colors.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings.colors.header_primary"
+      },
+      {
+        "type": "color",
+        "id": "colors_primary",
+        "label": "t:settings.colors.primary",
+        "default": "#1E4638",
+        "info": "t:settings.colors.primary_info"
+      },
+      {
+        "type": "color",
+        "id": "colors_accent",
+        "label": "t:settings.colors.accent",
+        "default": "#C9A227",
+        "info": "t:settings.colors.accent_info"
+      },
+      {
+        "type": "color",
+        "id": "colors_background",
+        "label": "t:settings.colors.background",
+        "default": "#FAF7F0",
+        "info": "t:settings.colors.background_info"
+      },
+      {
+        "type": "color",
+        "id": "colors_background_secondary",
+        "label": "t:settings.colors.background_secondary",
+        "default": "#E3EAE1",
+        "info": "t:settings.colors.background_secondary_info"
+      },
+      {
+        "type": "color",
+        "id": "colors_text",
+        "label": "t:settings.colors.text",
+        "default": "#1A1A1A",
+        "info": "t:settings.colors.text_info"
+      },
+      {
+        "type": "color",
+        "id": "colors_white",
+        "label": "t:settings.colors.white",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "header",
+        "content": "t:settings.colors.header_feedback"
+      },
+      {
+        "type": "color",
+        "id": "colors_success",
+        "label": "t:settings.colors.success",
+        "default": "#3F6B4E"
+      },
+      {
+        "type": "color",
+        "id": "colors_error",
+        "label": "t:settings.colors.error",
+        "default": "#B3261E"
+      }
+    ]
+  },
+  {
+    "name": "t:settings.typography.name",
+    "settings": [
+      {
+        "type": "select",
+        "id": "type_header_font",
+        "label": "t:settings.typography.header_font",
+        "options": [
+          { "value": "fraunces", "label": "Fraunces" },
+          { "value": "playfair", "label": "Playfair Display" }
+        ],
+        "default": "fraunces"
+      },
+      {
+        "type": "select",
+        "id": "type_body_font",
+        "label": "t:settings.typography.body_font",
+        "options": [
+          { "value": "inter", "label": "Inter" },
+          { "value": "work_sans", "label": "Work Sans" }
+        ],
+        "default": "inter"
+      },
+      {
+        "type": "range",
+        "id": "type_header_scale",
+        "label": "t:settings.typography.header_scale",
+        "min": 100,
+        "max": 130,
+        "step": 2,
+        "unit": "%",
+        "default": 100
+      },
+      {
+        "type": "range",
+        "id": "type_body_scale",
+        "label": "t:settings.typography.body_scale",
+        "min": 90,
+        "max": 120,
+        "step": 2,
+        "unit": "%",
+        "default": 100
+      }
+    ]
+  },
+  {
+    "name": "t:settings.branding.name",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "t:settings.branding.favicon",
+        "info": "t:settings.branding.favicon_info"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "t:settings.branding.logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "label": "t:settings.branding.logo_width",
+        "min": 80,
+        "max": 260,
+        "step": 10,
+        "unit": "px",
+        "default": 150
+      }
+    ]
+  },
+  {
+    "name": "t:settings.layout.name",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "label": "t:settings.layout.page_width",
+        "min": 1100,
+        "max": 1600,
+        "step": 20,
+        "unit": "px",
+        "default": 1320
+      },
+      {
+        "type": "range",
+        "id": "spacing_sections",
+        "label": "t:settings.layout.spacing_sections",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "unit": "px",
+        "default": 64
+      },
+      {
+        "type": "range",
+        "id": "radius_base",
+        "label": "t:settings.layout.radius_base",
+        "min": 0,
+        "max": 24,
+        "step": 2,
+        "unit": "px",
+        "default": 12
+      }
+    ]
+  },
+  {
+    "name": "t:settings.cart.name",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "t:settings.cart.type",
+        "options": [
+          { "value": "drawer", "label": "t:settings.cart.type_drawer" },
+          { "value": "page", "label": "t:settings.cart.type_page" }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_bundle_upsell",
+        "label": "t:settings.cart.show_bundle_upsell",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "cart_free_shipping_text",
+        "label": "t:settings.cart.free_shipping_text",
+        "default": "Livraison offerte en France métropolitaine"
+      }
+    ]
+  },
+  {
+    "name": "t:settings.reviews.name",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "reviews_enable",
+        "label": "t:settings.reviews.enable",
+        "info": "t:settings.reviews.enable_info",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "reviews_namespace",
+        "label": "t:settings.reviews.namespace",
+        "default": "reviews",
+        "info": "t:settings.reviews.namespace_info"
+      }
+    ]
+  },
+  {
+    "name": "t:settings.social.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings.social.header"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest",
+        "label": "Pinterest"
+      }
+    ]
+  },
+  {
+    "name": "t:settings.legal.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings.legal.header_company"
+      },
+      {
+        "type": "text",
+        "id": "legal_company_name",
+        "label": "t:settings.legal.company_name",
+        "default": "BioTal SAS"
+      },
+      {
+        "type": "text",
+        "id": "legal_siret",
+        "label": "t:settings.legal.siret",
+        "default": "000 000 000 00000"
+      },
+      {
+        "type": "text",
+        "id": "legal_address",
+        "label": "t:settings.legal.address",
+        "default": "Adresse à compléter, France"
+      },
+      {
+        "type": "text",
+        "id": "legal_email",
+        "label": "t:settings.legal.email",
+        "default": "contact@biotal.fr"
+      }
+    ]
+  }
+]

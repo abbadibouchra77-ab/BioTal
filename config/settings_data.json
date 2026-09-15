@@ -1,0 +1,42 @@
+{
+  "current": {
+    "colors_primary": "#1E4638",
+    "colors_accent": "#C9A227",
+    "colors_background": "#FAF7F0",
+    "colors_background_secondary": "#E3EAE1",
+    "colors_text": "#1A1A1A",
+    "colors_white": "#FFFFFF",
+    "colors_success": "#3F6B4E",
+    "colors_error": "#B3261E",
+    "type_header_font": "fraunces",
+    "type_body_font": "inter",
+    "type_header_scale": 100,
+    "type_body_scale": 100,
+    "logo_width": 150,
+    "page_width": 1320,
+    "spacing_sections": 64,
+    "radius_base": 12,
+    "cart_type": "drawer",
+    "cart_show_bundle_upsell": true,
+    "cart_free_shipping_text": "Livraison offerte en France métropolitaine",
+    "reviews_enable": false,
+    "reviews_namespace": "reviews",
+    "legal_company_name": "BioTal SAS",
+    "legal_siret": "000 000 000 00000",
+    "legal_address": "Adresse à compléter, France",
+    "legal_email": "contact@biotal.fr"
+  },
+  "presets": {
+    "BioTal — Lancement": {
+      "colors_primary": "#1E4638",
+      "colors_accent": "#C9A227",
+      "colors_background": "#FAF7F0",
+      "colors_background_secondary": "#E3EAE1",
+      "colors_text": "#1A1A1A",
+      "colors_white": "#FFFFFF",
+      "type_header_font": "fraunces",
+      "type_body_font": "inter",
+      "cart_type": "drawer"
+    }
+  }
+}

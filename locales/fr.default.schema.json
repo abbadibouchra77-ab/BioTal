@@ -1,0 +1,69 @@
+{
+  "settings": {
+    "colors": {
+      "name": "Couleurs",
+      "header_primary": "Palette de marque",
+      "primary": "Vert forêt (primaire)",
+      "primary_info": "Header, boutons principaux, footer.",
+      "accent": "Doré (accent)",
+      "accent_info": "Badges, liens au survol, prix promo. À utiliser en touche, jamais en fond de grande surface.",
+      "background": "Crème (fond principal)",
+      "background_info": "Fond par défaut des pages.",
+      "background_secondary": "Vert sauge clair (fond secondaire)",
+      "background_secondary_info": "Bandeaux de réassurance, cartes produit, sections alternées.",
+      "text": "Texte principal",
+      "text_info": "Noir doux, jamais de noir pur.",
+      "white": "Blanc",
+      "header_feedback": "Couleurs fonctionnelles",
+      "success": "Succès",
+      "error": "Erreur"
+    },
+    "typography": {
+      "name": "Typographie",
+      "header_font": "Police des titres",
+      "body_font": "Police du texte courant",
+      "header_scale": "Échelle des titres",
+      "body_scale": "Échelle du texte"
+    },
+    "branding": {
+      "name": "Logo & favicon",
+      "favicon": "Favicon",
+      "favicon_info": "Image carrée recommandée, au moins 180 x 180 px. Déclinée automatiquement en 16x16, 32x32 et 180x180 (Apple touch icon).",
+      "logo": "Logo",
+      "logo_width": "Largeur du logo"
+    },
+    "layout": {
+      "name": "Mise en page",
+      "page_width": "Largeur du contenu",
+      "spacing_sections": "Espacement entre sections",
+      "radius_base": "Arrondi des éléments"
+    },
+    "cart": {
+      "name": "Panier",
+      "type": "Type de panier",
+      "type_drawer": "Tiroir (drawer)",
+      "type_page": "Page dédiée",
+      "show_bundle_upsell": "Afficher la proposition de bundle",
+      "free_shipping_text": "Texte de livraison offerte"
+    },
+    "reviews": {
+      "name": "Avis clients",
+      "enable": "Activer l'affichage des avis",
+      "enable_info": "À activer une fois une application d'avis connectée (les notes sont lues depuis les métachamps produit).",
+      "namespace": "Namespace des métachamps",
+      "namespace_info": "Espace de nom des métachamps utilisé par l'application d'avis (ex : reviews)."
+    },
+    "social": {
+      "name": "Réseaux sociaux",
+      "header": "Liens vers vos profils"
+    },
+    "legal": {
+      "name": "Mentions légales",
+      "header_company": "Informations société",
+      "company_name": "Raison sociale",
+      "siret": "SIRET",
+      "address": "Adresse",
+      "email": "E-mail de contact"
+    }
+  }
+}

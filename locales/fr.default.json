@@ -1,0 +1,247 @@
+{
+  "general": {
+    "meta": {
+      "tagline": "Compléments alimentaires bien-être, routine sommeil & sérénité"
+    },
+    "accessibility": {
+      "skip_to_content": "Aller directement au contenu",
+      "close": "Fermer",
+      "menu": "Menu",
+      "open_menu": "Ouvrir le menu",
+      "close_menu": "Fermer le menu",
+      "cart": "Panier",
+      "search": "Rechercher",
+      "next_slide": "Diapositive suivante",
+      "previous_slide": "Diapositive précédente",
+      "total_reviews": "Total des avis",
+      "star_rating_of": "Note de {{ rating }} sur {{ max }}",
+      "loading": "Chargement en cours",
+      "expand": "Développer",
+      "collapse": "Réduire"
+    },
+    "search": {
+      "title": "Rechercher",
+      "placeholder": "Rechercher un produit, une routine…",
+      "submit": "Rechercher",
+      "no_results_html": "Aucun résultat pour « {{ terms }} ».",
+      "results_count": {
+        "one": "{{ count }} résultat",
+        "other": "{{ count }} résultats"
+      }
+    },
+    "pagination": {
+      "previous": "Précédent",
+      "next": "Suivant",
+      "label": "Pagination",
+      "page": "Page {{ number }}"
+    },
+    "404": {
+      "title": "Page introuvable",
+      "subtext": "Le lien est peut-être rompu, ou la page a été déplacée.",
+      "link": "Retour à l'accueil"
+    },
+    "password_page": {
+      "opening_soon": "Ouverture prochaine",
+      "login_form_heading": "Entrer avec le mot de passe boutique",
+      "login_password_button": "Entrer",
+      "login_form_password_label": "Mot de passe",
+      "login_form_password_placeholder": "Mot de passe",
+      "login_form_error": "Mot de passe incorrect.",
+      "admin_link_html": "Vous êtes propriétaire de la boutique ? <a href=\"/admin\">Connectez-vous ici</a>",
+      "newsletter_heading": "Soyez informé·e du lancement"
+    },
+    "newsletter": {
+      "heading": "Rejoignez la communauté BioTal",
+      "subheading": "Conseils routine bien-être et offres de lancement, une à deux fois par mois.",
+      "placeholder": "Votre adresse e-mail",
+      "submit": "S'inscrire",
+      "success": "Merci, votre inscription est confirmée.",
+      "error": "Une erreur est survenue, merci de réessayer."
+    },
+    "social": {
+      "follow_us": "Suivez BioTal"
+    }
+  },
+  "header": {
+    "announcement": {
+      "shipping": "Livraison incluse en France métropolitaine",
+      "guarantee": "Satisfait ou remboursé sous 30 jours"
+    },
+    "cart_count": {
+      "one": "{{ count }} article",
+      "other": "{{ count }} articles"
+    }
+  },
+  "footer": {
+    "newsletter_heading": "Restons en contact",
+    "legal_heading": "Informations légales",
+    "social_heading": "Suivez-nous",
+    "payment_heading": "Paiement sécurisé",
+    "company_heading": "BioTal",
+    "help_heading": "Aide",
+    "made_in": "Formulé en Europe · Expédié depuis l'Allemagne",
+    "copyright": "© {{ year }} {{ shop }}. Tous droits réservés."
+  },
+  "sections": {
+    "hero": {
+      "default_heading": "Votre routine bien-être, simplement.",
+      "default_subheading": "Des compléments alimentaires pensés pour accompagner le sommeil, le stress du quotidien et l'équilibre minéral — sans promesse magique, juste de la constance.",
+      "default_cta": "Découvrir Magnesium 4-fold Complex",
+      "badge_launch": "Offre de lancement"
+    },
+    "trust_bar": {
+      "shipping_title": "Livraison incluse",
+      "shipping_text": "Expédiée depuis l'Europe vers la France",
+      "payment_title": "Paiement sécurisé",
+      "payment_text": "Vos données sont protégées",
+      "guarantee_title": "Satisfait ou remboursé",
+      "guarantee_text": "30 jours pour changer d'avis",
+      "made_in_title": "Fabriqué en Europe",
+      "made_in_text": "Standards de qualité européens"
+    },
+    "featured_product": {
+      "badge": "Lancement",
+      "cta": "Voir le produit",
+      "add_to_cart": "Ajouter au panier"
+    },
+    "bundle_highlight": {
+      "default_heading": "Le bundle Routine Minéraux",
+      "default_subheading": "Magnésium 4-fold Complex + Vitamine D3, pensés pour se compléter au sein d'une même routine.",
+      "price_label": "Prix bundle",
+      "compare_label": "Prix à l'unité",
+      "savings": "Vous économisez {{ amount }}",
+      "cta": "Composer mon bundle"
+    },
+    "product_grid": {
+      "default_heading": "Nos essentiels",
+      "default_subheading": "3 produits, 3 bundles, une seule routine à construire à votre rythme.",
+      "view_all": "Voir tout"
+    },
+    "how_it_works": {
+      "default_heading": "Comment ça marche",
+      "default_subheading": "Une routine simple, en trois temps.",
+      "step_1_title": "Je choisis ma routine",
+      "step_1_text": "Un produit ciblé ou un bundle pensé pour se compléter.",
+      "step_2_title": "J'intègre le geste quotidien",
+      "step_2_text": "Un rituel simple, au moment qui vous convient le mieux.",
+      "step_3_title": "Je suis ma régularité",
+      "step_3_text": "La constance fait la différence, jour après jour."
+    },
+    "reviews": {
+      "default_heading": "Ce qu'en pensent nos clients",
+      "based_on": {
+        "one": "Basé sur {{ count }} avis",
+        "other": "Basé sur {{ count }} avis"
+      },
+      "no_reviews": "Les avis clients seront bientôt disponibles ici.",
+      "verified": "Achat vérifié"
+    },
+    "faq": {
+      "default_heading": "Questions fréquentes"
+    },
+    "cross_sell": {
+      "default_heading": "Complétez votre routine",
+      "add_to_cart": "Ajouter"
+    },
+    "newsletter": {
+      "default_heading": "Ne manquez rien",
+      "default_subheading": "Lancements, conseils routine et offres exclusives."
+    }
+  },
+  "products": {
+    "price": {
+      "regular": "Prix",
+      "sale": "Prix promo",
+      "from": "À partir de",
+      "unit_price": "{{ price }} / {{ unit }}",
+      "purchase_one_time": "Achat unique",
+      "purchase_subscription": "Abonnement récurrent",
+      "subscription_save": "Économisez {{ percent }}",
+      "subscription_delivery_every": "Livraison tous les {{ interval }}"
+    },
+    "form": {
+      "add_to_cart": "Ajouter au panier",
+      "sold_out": "Épuisé",
+      "unavailable": "Indisponible",
+      "quantity": "Quantité",
+      "choose_options": "Choisir les options",
+      "view_details": "Voir le produit"
+    },
+    "stock": {
+      "low_stock": {
+        "one": "Il ne reste qu'{{ count }} exemplaire en stock",
+        "other": "Il ne reste que {{ count }} exemplaires en stock"
+      },
+      "in_stock": "En stock",
+      "out_of_stock": "Rupture de stock"
+    },
+    "gallery": {
+      "zoom": "Agrandir l'image",
+      "thumbnail": "Voir l'image {{ index }}"
+    },
+    "accordion": {
+      "composition": "Composition & dosage",
+      "usage": "Mode d'emploi",
+      "shipping": "Livraison & retours"
+    },
+    "allergens": {
+      "heading": "Allergènes & précautions d'emploi",
+      "default_text": "Complément alimentaire ne pouvant se substituer à une alimentation variée et équilibrée ni à un mode de vie sain. Ne pas dépasser la dose journalière recommandée indiquée sur l'emballage. Tenir hors de portée des jeunes enfants. Déconseillé aux femmes enceintes ou allaitantes sans avis médical. En cas de traitement médical, demander conseil à un professionnel de santé."
+    },
+    "faq": {
+      "heading": "Questions sur ce produit"
+    },
+    "recommendations": {
+      "heading": "Complétez votre routine avec…"
+    },
+    "badges": {
+      "launch": "Lancement",
+      "bundle": "Bundle"
+    }
+  },
+  "collections": {
+    "filters": {
+      "heading": "Filtrer par objectif",
+      "all": "Tous les objectifs",
+      "clear": "Réinitialiser",
+      "apply": "Appliquer",
+      "sort_by": "Trier par"
+    },
+    "empty": "Aucun produit dans cette collection pour le moment.",
+    "product_count": {
+      "one": "{{ count }} produit",
+      "other": "{{ count }} produits"
+    }
+  },
+  "cart": {
+    "title": "Votre panier",
+    "empty": "Votre panier est vide.",
+    "empty_cta": "Continuer mes achats",
+    "quantity": "Quantité",
+    "remove": "Retirer",
+    "subtotal": "Sous-total",
+    "taxes_included": "Taxes incluses",
+    "shipping_at_checkout": "Frais de livraison calculés à l'étape suivante",
+    "checkout": "Passer commande",
+    "continue_shopping": "Continuer mes achats",
+    "free_shipping_reached": "Livraison offerte débloquée !",
+    "free_shipping_remaining": "Plus que {{ amount }} pour la livraison offerte",
+    "bundle_upsell": {
+      "heading": "Complétez le bundle Routine Minéraux",
+      "text": "Ajoutez {{ product }} et profitez du prix bundle à {{ price }}.",
+      "cta": "Ajouter au bundle"
+    },
+    "note": {
+      "label": "Ajouter une note à la commande"
+    },
+    "update": "Mettre à jour",
+    "view_cart": "Voir le panier",
+    "vendor": "Vendu par {{ vendor }}"
+  },
+  "blog": {
+    "read_more": "Lire l'article",
+    "by_author": "Par {{ author }}",
+    "back_to_blog": "Retour au blog",
+    "tags": "Étiquettes"
+  }
+}
