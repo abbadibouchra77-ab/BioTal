@@ -36,6 +36,18 @@ quotidien automatisé) :
 
 ## Contrôle technique quotidien
 
-Un Routine planifié (`Claude_Code_Remote`) déclenche une session dédiée chaque jour pour :
-`shopify theme check`, vérification d'intégrité (JSON, assets/snippets/sections référencés),
-correction des bugs techniques trouvés, puis mise à jour de `SYNC.md` comme décrit ci-dessus.
+Un Routine planifié (`Claude_Code_Remote`, id `trig_01QtJG5wuAqydSfvC71GH4P4`, tous les jours à
+07:13 UTC) déclenche : `shopify theme check`, vérification d'intégrité (JSON, assets/
+snippets/sections référencés), correction des bugs techniques trouvés, puis mise à jour de
+`SYNC.md` comme décrit ci-dessus.
+
+**Note technique importante** : ce Routine est volontairement lié à *cette session persistante*
+(`session_01SFPFAdPjzepXstW9fn3XcU`) plutôt qu'à une session neuve à chaque déclenchement, car
+l'organisation ne permet pas de transmettre le connecteur Google Drive à une session neuve créée
+par un Routine (limitation de plateforme, pas de mon fait). Une session neuve n'aurait donc pas
+accès à Drive pour lire/écrire `SYNC.md`. En restant lié à cette session déjà connectée à Drive,
+GitHub et Shopify, le Routine garde l'accès nécessaire — au prix de faire grossir cette même
+conversation chaque jour. Si cette conversation venait à être supprimée/inaccessible, recréer le
+Routine depuis une session qui tient les connecteurs Drive nécessaires (voir avertissement retourné
+par `create_trigger` le cas échéant), ou en demandant à l'utilisateur de le faire depuis l'UI
+Routines de claude.ai.
