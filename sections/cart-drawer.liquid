@@ -1,0 +1,82 @@
+<cart-drawer class="cart-drawer" data-cart-drawer aria-hidden="true">
+  <div class="cart-drawer__overlay" data-cart-drawer-close tabindex="-1"></div>
+  <div class="cart-drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'cart.title' | t }}">
+    <div class="cart-drawer__header">
+      <h2>{{ 'cart.title' | t }}</h2>
+      <button type="button" class="cart-drawer__close" data-cart-drawer-close>
+        {%- render 'icon', name: 'close', size: 20 -%}
+        <span class="visually-hidden">{{ 'general.accessibility.close' | t }}</span>
+      </button>
+    </div>
+
+    <div class="cart-drawer__body" data-cart-drawer-body>
+      {%- if cart.item_count > 0 -%}
+        {%- render 'cart-items', cart: cart -%}
+
+        {%- if settings.cart_show_bundle_upsell and settings.cart_bundle_trigger_product != blank and settings.cart_bundle_product != blank -%}
+          {%- liquid
+            assign trigger_in_cart = false
+            assign bundle_in_cart = false
+            for item in cart.items
+              if item.product_id == settings.cart_bundle_trigger_product.id
+                assign trigger_in_cart = true
+              endif
+              if item.product_id == settings.cart_bundle_product.id
+                assign bundle_in_cart = true
+              endif
+            endfor
+          -%}
+          {%- if trigger_in_cart and bundle_in_cart == false -%}
+            {%- assign bundle_variant = settings.cart_bundle_product.selected_or_first_available_variant -%}
+            {%- assign bundle_price = bundle_variant.price | money -%}
+            <div class="cart-upsell" data-cart-upsell>
+              <p class="cart-upsell__heading">{{ 'cart.bundle_upsell.heading' | t }}</p>
+              <p class="cart-upsell__text">
+                {{ 'cart.bundle_upsell.text' | t: product: settings.cart_bundle_product.title, price: bundle_price }}
+              </p>
+              <product-quick-add data-product-card>
+                <form method="post" action="/cart/add" class="cart-upsell__form">
+                  <input type="hidden" name="id" value="{{ bundle_variant.id }}">
+                  <button type="submit" class="btn btn--accent btn--sm" data-quick-add-submit>
+                    <span data-quick-add-label>{{ 'cart.bundle_upsell.cta' | t }}</span>
+                  </button>
+                </form>
+              </product-quick-add>
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      {%- else -%}
+        <div class="cart-drawer__empty">
+          <p>{{ 'cart.empty' | t }}</p>
+          <button type="button" class="btn btn--primary" data-cart-drawer-close>{{ 'cart.empty_cta' | t }}</button>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <div class="cart-drawer__footer">
+        {%- if settings.cart_free_shipping_text != blank -%}
+          <p class="cart-drawer__shipping-note">
+            {%- render 'icon', name: 'truck', size: 14 -%} {{ settings.cart_free_shipping_text }}
+          </p>
+        {%- endif -%}
+        <div class="cart-drawer__subtotal">
+          <span>{{ 'cart.subtotal' | t }}</span>
+          <span data-cart-subtotal>{{ cart.total_price | money }}</span>
+        </div>
+        <p class="cart-drawer__taxes">{{ 'cart.taxes_included' | t }} · {{ 'cart.shipping_at_checkout' | t }}</p>
+        <a href="/checkout" class="btn btn--primary btn--full btn--lg">{{ 'cart.checkout' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</cart-drawer>
+
+{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
+{{ 'section-cart-drawer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-cart-drawer.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Tiroir panier"
+}
+{% endschema %}

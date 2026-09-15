@@ -1,0 +1,88 @@
+<div class="cart-page section">
+  <div class="page-width">
+    <h1 class="cart-page__heading">{{ 'cart.title' | t }}</h1>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" class="cart-page__form">
+        <div class="cart-page__layout">
+          <div class="cart-page__items">
+            <ul class="cart-items cart-items--page">
+              {%- for item in cart.items -%}
+                <li class="cart-item" data-cart-item>
+                  <a href="{{ item.url }}" class="cart-item__media">
+                    {%- if item.image -%}
+                      <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.image.alt | default: item.title | escape }}" width="100" height="100" loading="lazy">
+                    {%- else -%}
+                      {{ 'product-1' | placeholder_svg_tag: 'cart-item__placeholder' }}
+                    {%- endif -%}
+                  </a>
+                  <div class="cart-item__details">
+                    <a href="{{ item.url }}" class="cart-item__title">{{ item.product.title }}</a>
+                    {%- unless item.product.has_only_default_variant -%}
+                      <p class="cart-item__variant">{{ item.variant.title }}</p>
+                    {%- endunless -%}
+                    {%- if item.selling_plan_allocation -%}
+                      <p class="cart-item__selling-plan">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                    {%- endif -%}
+                    <div class="cart-item__quantity">
+                      <label class="visually-hidden" for="CartQuantity-{{ forloop.index }}">{{ 'cart.quantity' | t }}</label>
+                      <input
+                        type="number"
+                        id="CartQuantity-{{ forloop.index }}"
+                        name="updates[{{ item.key }}]"
+                        value="{{ item.quantity }}"
+                        min="0"
+                        inputmode="numeric"
+                        class="cart-page__quantity-input"
+                      >
+                    </div>
+                  </div>
+                  <div class="cart-item__price">
+                    {%- if item.original_line_price != item.final_line_price -%}
+                      <span class="price__compare">{{ item.original_line_price | money }}</span>
+                    {%- endif -%}
+                    <span class="cart-item__final-price">{{ item.final_line_price | money }}</span>
+                  </div>
+                </li>
+              {%- endfor -%}
+            </ul>
+            <button type="submit" name="update" class="btn btn--outline">{{ 'cart.update' | t }}</button>
+          </div>
+
+          <div class="cart-page__summary">
+            {%- if settings.cart_free_shipping_text != blank -%}
+              <p class="cart-drawer__shipping-note">
+                {%- render 'icon', name: 'truck', size: 14 -%} {{ settings.cart_free_shipping_text }}
+              </p>
+            {%- endif -%}
+            <div class="cart-drawer__subtotal">
+              <span>{{ 'cart.subtotal' | t }}</span>
+              <span>{{ cart.total_price | money }}</span>
+            </div>
+            <p class="cart-drawer__taxes">{{ 'cart.taxes_included' | t }} · {{ 'cart.shipping_at_checkout' | t }}</p>
+
+            <label for="CartNote" class="cart-page__note-label">{{ 'cart.note.label' | t }}</label>
+            <textarea id="CartNote" name="note" class="cart-page__note">{{ cart.note }}</textarea>
+
+            <button type="submit" name="checkout" class="btn btn--primary btn--full btn--lg">{{ 'cart.checkout' | t }}</button>
+            <a href="{{ routes.all_products_collection_url }}" class="cart-page__continue">{{ 'cart.continue_shopping' | t }}</a>
+          </div>
+        </div>
+      </form>
+    {%- else -%}
+      <div class="cart-page__empty">
+        <p>{{ 'cart.empty' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">{{ 'cart.empty_cta' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
+{{ 'section-cart-page.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Panier"
+}
+{% endschema %}

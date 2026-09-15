@@ -44,6 +44,9 @@
       "type_drawer": "Tiroir (drawer)",
       "type_page": "Page dédiée",
       "show_bundle_upsell": "Afficher la proposition de bundle",
+      "bundle_trigger_product": "Produit déclencheur",
+      "bundle_trigger_product_info": "Lorsque ce produit est dans le panier (et que le bundle n'y est pas), une suggestion de bundle s'affiche.",
+      "bundle_product": "Produit bundle à suggérer",
       "free_shipping_text": "Texte de livraison offerte"
     },
     "reviews": {

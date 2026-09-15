@@ -199,6 +199,17 @@
         "default": true
       },
       {
+        "type": "product",
+        "id": "cart_bundle_trigger_product",
+        "label": "t:settings.cart.bundle_trigger_product",
+        "info": "t:settings.cart.bundle_trigger_product_info"
+      },
+      {
+        "type": "product",
+        "id": "cart_bundle_product",
+        "label": "t:settings.cart.bundle_product"
+      },
+      {
         "type": "text",
         "id": "cart_free_shipping_text",
         "label": "t:settings.cart.free_shipping_text",

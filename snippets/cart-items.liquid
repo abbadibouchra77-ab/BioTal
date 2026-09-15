@@ -1,0 +1,63 @@
+{%- comment -%}
+  Liste des articles du panier — partagée entre le tiroir panier et la page panier.
+  Params : cart (obligatoire)
+{%- endcomment -%}
+<ul class="cart-items" data-cart-items>
+  {%- for item in cart.items -%}
+    <li class="cart-item" data-cart-item data-cart-item-key="{{ item.key }}">
+      <a href="{{ item.url }}" class="cart-item__media">
+        {%- if item.image -%}
+          <img
+            src="{{ item.image | image_url: width: 200 }}"
+            alt="{{ item.image.alt | default: item.title | escape }}"
+            width="100"
+            height="100"
+            loading="lazy"
+          >
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'cart-item__placeholder' }}
+        {%- endif -%}
+      </a>
+
+      <div class="cart-item__details">
+        <a href="{{ item.url }}" class="cart-item__title">{{ item.product.title }}</a>
+        {%- unless item.product.has_only_default_variant -%}
+          <p class="cart-item__variant">{{ item.variant.title }}</p>
+        {%- endunless -%}
+        {%- if item.selling_plan_allocation -%}
+          <p class="cart-item__selling-plan">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+        {%- endif -%}
+        {%- if item.product.vendor != blank -%}
+          <p class="cart-item__vendor">{{ 'cart.vendor' | t: vendor: item.product.vendor }}</p>
+        {%- endif -%}
+
+        <div class="cart-item__quantity">
+          <div class="quantity-selector quantity-selector--sm">
+            <button type="button" class="quantity-selector__btn" data-cart-quantity-decrease aria-label="{{ 'products.form.quantity_decrease' | t }}">
+              {%- render 'icon', name: 'minus', size: 12 -%}
+            </button>
+            <input
+              type="number"
+              value="{{ item.quantity }}"
+              min="0"
+              inputmode="numeric"
+              aria-label="{{ 'cart.quantity' | t }}"
+              data-cart-quantity-input
+            >
+            <button type="button" class="quantity-selector__btn" data-cart-quantity-increase aria-label="{{ 'products.form.quantity_increase' | t }}">
+              {%- render 'icon', name: 'plus', size: 12 -%}
+            </button>
+          </div>
+          <button type="button" class="cart-item__remove" data-cart-remove>{{ 'cart.remove' | t }}</button>
+        </div>
+      </div>
+
+      <div class="cart-item__price">
+        {%- if item.original_line_price != item.final_line_price -%}
+          <span class="price__compare">{{ item.original_line_price | money }}</span>
+        {%- endif -%}
+        <span class="cart-item__final-price">{{ item.final_line_price | money }}</span>
+      </div>
+    </li>
+  {%- endfor -%}
+</ul>
