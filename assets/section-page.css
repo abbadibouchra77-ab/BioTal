@@ -1,0 +1,31 @@
+.page-content__heading {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.rte h2 {
+  margin-top: 1.75em;
+}
+
+.rte ul,
+.rte ol {
+  margin-bottom: 1em;
+}
+
+.rte a {
+  text-decoration: underline;
+  color: var(--color-primary-dark);
+}
+
+.rte table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+}
+
+.rte table th,
+.rte table td {
+  border: 1px solid var(--color-bg-secondary);
+  padding: 0.6em 0.8em;
+  text-align: left;
+}

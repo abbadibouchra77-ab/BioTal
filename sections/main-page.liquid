@@ -1,0 +1,16 @@
+<div class="page-content section">
+  <div class="page-width page-width--narrow">
+    <h1 class="page-content__heading">{{ page.title }}</h1>
+    <div class="page-content__body rte">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+
+{{ 'section-page.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Page"
+}
+{% endschema %}

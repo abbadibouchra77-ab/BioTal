@@ -1,0 +1,31 @@
+.article__meta {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.article__title {
+  margin-top: 0.2em;
+}
+
+.article__hero {
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 1.5rem 0 2rem;
+}
+
+.article__tags {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.article__back {
+  display: inline-block;
+  margin-top: 2rem;
+  font-weight: 600;
+  text-decoration: none;
+}

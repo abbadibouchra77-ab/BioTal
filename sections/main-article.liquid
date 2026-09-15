@@ -1,0 +1,48 @@
+<article class="article section">
+  <div class="page-width page-width--narrow">
+    <p class="article__meta">
+      <a href="{{ blog.url }}">{{ blog.title }}</a> ·
+      {{ article.published_at | date: '%d %B %Y' }}
+      {%- if article.author != blank %} · {{ 'blog.by_author' | t: author: article.author }}{% endif -%}
+    </p>
+    <h1 class="article__title">{{ article.title }}</h1>
+
+    {%- if article.image -%}
+      <div class="article__hero">
+        <img
+          src="{{ article.image | image_url: width: 1200 }}"
+          srcset="{{ article.image | image_url: width: 700 }} 700w, {{ article.image | image_url: width: 1200 }} 1200w"
+          sizes="(min-width: 700px) 46rem, 100vw"
+          alt="{{ article.image.alt | default: article.title | escape }}"
+          width="{{ article.image.width }}"
+          height="{{ article.image.height }}"
+          loading="eager"
+        >
+      </div>
+    {%- endif -%}
+
+    <div class="article__content rte">
+      {{ article.content }}
+    </div>
+
+    {%- if article.tags.size > 0 -%}
+      <div class="article__tags">
+        <span>{{ 'blog.tags' | t }} :</span>
+        {%- for tag in article.tags -%}
+          <span class="badge badge--outline">{{ tag }}</span>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <a href="{{ blog.url }}" class="article__back">← {{ 'blog.back_to_blog' | t }}</a>
+  </div>
+</article>
+
+{{ 'section-page.css' | asset_url | stylesheet_tag }}
+{{ 'section-article.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Article"
+}
+{% endschema %}
