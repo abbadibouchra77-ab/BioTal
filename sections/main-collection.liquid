@@ -1,0 +1,103 @@
+<div class="collection section">
+  <div class="page-width">
+    <div class="section-header section-header--center">
+      <h1>{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}
+        <div class="section-header__subheading">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+
+    <p class="collection__count">
+      {{ 'collections.product_count' | t: count: collection.products_count }}
+    </p>
+
+    <div class="collection__layout {% if section.settings.show_filters %}collection__layout--with-filters{% endif %}">
+      {%- if section.settings.show_filters and collection.filters.size > 0 -%}
+        <aside class="collection__filters" aria-label="{{ 'collections.filters.heading' | t }}">
+          <form method="get" action="{{ collection.url }}">
+            <h2 class="collection__filters-heading">{{ 'collections.filters.heading' | t }}</h2>
+            {%- for filter in collection.filters -%}
+              <fieldset class="collection__filter-group">
+                <legend>{{ filter.label }}</legend>
+                {%- for value in filter.values -%}
+                  <label class="collection__filter-option">
+                    <input
+                      type="checkbox"
+                      name="{{ value.param_name }}"
+                      value="{{ value.value }}"
+                      {% if value.active %}checked{% endif %}
+                      {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                    >
+                    <span>{{ value.label }} ({{ value.count }})</span>
+                  </label>
+                {%- endfor -%}
+              </fieldset>
+            {%- endfor -%}
+            <button type="submit" class="btn btn--primary btn--full btn--sm">{{ 'collections.filters.apply' | t }}</button>
+            <a href="{{ collection.url }}" class="collection__filters-clear">{{ 'collections.filters.clear' | t }}</a>
+          </form>
+        </aside>
+      {%- endif -%}
+
+      <div class="collection__main">
+        {%- if section.settings.show_filters and collection.sort_options.size > 0 -%}
+          <form method="get" action="{{ collection.url }}" class="collection__sort">
+            <label for="CollectionSortBy">{{ 'collections.filters.sort_by' | t }}</label>
+            <select name="sort_by" id="CollectionSortBy" onchange="this.form.submit()">
+              {%- for option in collection.sort_options -%}
+                <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>{{ option.name }}</option>
+              {%- endfor -%}
+            </select>
+          </form>
+        {%- endif -%}
+
+        {%- paginate collection.products by 24 -%}
+          {%- if collection.products.size > 0 -%}
+            <div class="grid grid--3">
+              {%- for product in collection.products -%}
+                {%- render 'product-card', product: product -%}
+              {%- endfor -%}
+            </div>
+          {%- else -%}
+            <p class="collection__empty">{{ 'collections.empty' | t }}</p>
+          {%- endif -%}
+
+          {%- if paginate.pages > 1 -%}
+            <nav class="pagination" aria-label="{{ 'general.pagination.label' | t }}">
+              {%- if paginate.previous -%}
+                <a href="{{ paginate.previous.url }}">{{ 'general.pagination.previous' | t }}</a>
+              {%- endif -%}
+              {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}
+                  <a href="{{ part.url }}">{{ part.title }}</a>
+                {%- else -%}
+                  <span aria-current="page">{{ part.title }}</span>
+                {%- endif -%}
+              {%- endfor -%}
+              {%- if paginate.next -%}
+                <a href="{{ paginate.next.url }}">{{ 'general.pagination.next' | t }}</a>
+              {%- endif -%}
+            </nav>
+          {%- endif -%}
+        {%- endpaginate -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ 'section-collection.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "label": "Afficher les filtres par objectif",
+      "info": "À activer lorsque le catalogue le justifie (au lancement, 3 produits suffisent sans filtres).",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

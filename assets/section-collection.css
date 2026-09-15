@@ -1,0 +1,114 @@
+.collection__count {
+  text-align: center;
+  color: var(--color-text-muted);
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+
+.collection__layout {
+  display: block;
+}
+
+.collection__layout--with-filters {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 900px) {
+  .collection__layout--with-filters {
+    grid-template-columns: 240px 1fr;
+    align-items: start;
+  }
+}
+
+.collection__filters {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.collection__filters-heading {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.collection__filter-group {
+  border: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+}
+
+.collection__filter-group legend {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.collection__filter-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  padding: 0.3rem 0;
+  cursor: pointer;
+}
+
+.collection__filters-clear {
+  display: block;
+  text-align: center;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+.collection__sort {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+}
+
+.collection__sort select {
+  padding: 0.5em 0.8em;
+  border-radius: calc(var(--radius) / 1.5);
+  border: 1px solid var(--color-bg-secondary);
+}
+
+.collection__empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: 3rem 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.pagination a,
+.pagination span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.2rem;
+  height: 2.2rem;
+  padding: 0 0.5rem;
+  border-radius: calc(var(--radius) / 1.5);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.pagination a:hover {
+  background: var(--color-bg-secondary);
+}
+
+.pagination span[aria-current="page"] {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
