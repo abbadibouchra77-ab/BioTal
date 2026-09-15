@@ -1,0 +1,67 @@
+<section class="trust-bar section section--tight" id="shopify-section-{{ section.id }}">
+  <div class="page-width">
+    <ul class="trust-bar__list">
+      {%- for block in section.blocks -%}
+        <li class="trust-bar__item" {{ block.shopify_attributes }}>
+          <span class="trust-bar__icon">{%- render 'icon', name: block.settings.icon, size: 24 -%}</span>
+          <span class="trust-bar__text">
+            <strong>{{ block.settings.title }}</strong>
+            {%- if block.settings.text != blank -%}<span>{{ block.settings.text }}</span>{%- endif -%}
+          </span>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{{ 'section-trust-bar.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Bandeau de réassurance",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Élément",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icône",
+          "options": [
+            { "value": "truck", "label": "Livraison" },
+            { "value": "shield", "label": "Paiement sécurisé" },
+            { "value": "check-circle", "label": "Garantie" },
+            { "value": "leaf", "label": "Origine / qualité" },
+            { "value": "lock", "label": "Sécurité" }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre",
+          "default": "Livraison incluse"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte complémentaire",
+          "default": "Expédiée depuis l'Europe vers la France"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bandeau de réassurance",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "truck", "title": "Livraison incluse", "text": "Expédiée depuis l'Europe vers la France" } },
+        { "type": "item", "settings": { "icon": "shield", "title": "Paiement sécurisé", "text": "Vos données sont protégées" } },
+        { "type": "item", "settings": { "icon": "check-circle", "title": "Satisfait ou remboursé", "text": "30 jours pour changer d'avis" } },
+        { "type": "item", "settings": { "icon": "leaf", "title": "Fabriqué en Europe", "text": "Standards de qualité européens" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,92 @@
+<section class="hero section" id="shopify-section-{{ section.id }}">
+  <div class="page-width hero__inner">
+    <div class="hero__content">
+      {%- if section.settings.badge_text != blank -%}
+        <span class="badge badge--accent">{{ section.settings.badge_text }}</span>
+      {%- endif -%}
+      <h1 class="hero__heading">
+        {%- if section.settings.heading != blank -%}
+          {{ section.settings.heading }}
+        {%- else -%}
+          {{ 'sections.hero.default_heading' | t }}
+        {%- endif -%}
+      </h1>
+      <div class="hero__subheading">
+        {%- if section.settings.subheading != blank -%}
+          {{ section.settings.subheading }}
+        {%- else -%}
+          <p>{{ 'sections.hero.default_subheading' | t }}</p>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: '#' }}" class="btn btn--primary btn--lg">
+          {{ section.settings.button_label }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="hero__media">
+      {%- if section.settings.image -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 900 }}"
+          srcset="{{ section.settings.image | image_url: width: 500 }} 500w, {{ section.settings.image | image_url: width: 800 }} 800w, {{ section.settings.image | image_url: width: 1100 }} 1100w, {{ section.settings.image | image_url: width: 1500 }} 1500w"
+          sizes="(min-width: 990px) 45vw, 100vw"
+          alt="{{ section.settings.image.alt | default: shop.name | escape }}"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+          loading="eager"
+          fetchpriority="high"
+        >
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'hero__placeholder' }}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{{ 'section-hero.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Héros",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Texte du badge",
+      "default": "Offre de lancement"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Sous-titre"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "Découvrir Magnesium 4-fold Complex"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Héros"
+    }
+  ]
+}
+{% endschema %}

@@ -1,4 +1,7 @@
 /* Accordéon générique — FAQ, fiche produit */
+.faq__list {
+  border-top: 1px solid var(--color-bg-secondary);
+}
 .accordion-item {
   border-bottom: 1px solid var(--color-bg-secondary);
 }

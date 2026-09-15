@@ -1,0 +1,86 @@
+<section class="faq section" id="shopify-section-{{ section.id }}">
+  <div class="page-width page-width--narrow">
+    <div class="section-header section-header--center">
+      <h2>
+        {%- if section.settings.heading != blank -%}
+          {{ section.settings.heading }}
+        {%- else -%}
+          {{ 'sections.faq.default_heading' | t }}
+        {%- endif -%}
+      </h2>
+    </div>
+
+    <div class="faq__list">
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}>
+          {%- render 'accordion-item',
+            title: block.settings.question,
+            content: block.settings.answer,
+            group: 'faq-' | append: section.id,
+            open: forloop.first
+          -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Réponse"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "question": "Quand vais-je ressentir les effets de ma routine ?",
+            "answer": "<p>Chaque routine bien-être est différente : nous recommandons une prise régulière sur plusieurs semaines, en complément d'une hygiène de vie équilibrée.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Comment sont fabriqués les produits BioTal ?",
+            "answer": "<p>Nos formules sont élaborées et fabriquées en Europe selon des standards de qualité stricts, puis expédiées directement vers la France.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Puis-je me faire rembourser ?",
+            "answer": "<p>Oui, vous disposez de 30 jours pour changer d'avis. Retrouvez les détails dans notre politique de retour.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

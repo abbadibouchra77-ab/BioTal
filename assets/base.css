@@ -132,6 +132,10 @@ summary:focus-visible,
   }
 }
 
+.page-width--narrow {
+  max-width: 46rem;
+}
+
 .section {
   padding-block: var(--section-spacing);
 }
@@ -305,6 +309,11 @@ summary:focus-visible,
 
 .visually-scoped-icon {
   flex-shrink: 0;
+}
+
+.product-grid-section__footer {
+  text-align: center;
+  margin-top: 2.5rem;
 }
 
 /* Prix */

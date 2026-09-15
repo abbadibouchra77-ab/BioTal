@@ -1,0 +1,83 @@
+{%- liquid
+  assign product = section.settings.product
+-%}
+<section class="featured-product section" id="shopify-section-{{ section.id }}">
+  <div class="page-width">
+    {%- if product -%}
+      {%- assign variant = product.selected_or_first_available_variant -%}
+      <div class="featured-product__inner">
+        <div class="featured-product__media">
+          {%- if product.featured_media -%}
+            <img
+              src="{{ product.featured_media | image_url: width: 800 }}"
+              srcset="{{ product.featured_media | image_url: width: 500 }} 500w, {{ product.featured_media | image_url: width: 800 }} 800w, {{ product.featured_media | image_url: width: 1100 }} 1100w"
+              sizes="(min-width: 990px) 40vw, 100vw"
+              alt="{{ product.featured_media.alt | default: product.title | escape }}"
+              width="{{ product.featured_media.width }}"
+              height="{{ product.featured_media.height }}"
+              loading="lazy"
+            >
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'featured-product__placeholder' }}
+          {%- endif -%}
+        </div>
+        <div class="featured-product__info">
+          <span class="badge badge--accent">{{ 'sections.featured_product.badge' | t }}</span>
+          <h2 class="featured-product__title">{{ product.title }}</h2>
+          {%- if section.settings.text != blank -%}
+            <div class="featured-product__text">{{ section.settings.text }}</div>
+          {%- else -%}
+            <div class="featured-product__text">{{ product.description | strip_html | truncatewords: 40 }}</div>
+          {%- endif -%}
+          {%- render 'rating-stars', product: product -%}
+          {%- render 'price', product: product, variant: variant, show_from: true -%}
+          {%- render 'stock-indicator', variant: variant -%}
+          <div class="featured-product__actions">
+            {%- if product.variants.size > 1 -%}
+              <a href="{{ product.url }}" class="btn btn--primary btn--lg">{{ 'sections.featured_product.cta' | t }}</a>
+            {%- elsif variant.available -%}
+              <product-quick-add data-product-card>
+                <form method="post" action="/cart/add" class="featured-product__form">
+                  <input type="hidden" name="id" value="{{ variant.id }}">
+                  <button type="submit" class="btn btn--primary btn--lg" data-quick-add-submit>
+                    <span data-quick-add-label>{{ 'sections.featured_product.add_to_cart' | t }}</span>
+                  </button>
+                </form>
+              </product-quick-add>
+              <a href="{{ product.url }}" class="btn btn--outline btn--lg">{{ 'sections.featured_product.cta' | t }}</a>
+            {%- else -%}
+              <a href="{{ product.url }}" class="btn btn--outline btn--lg">{{ 'products.form.sold_out' | t }}</a>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- else -%}
+      <p class="section__placeholder-note">{{ 'sections.featured_product.badge' | t }} — sélectionnez un produit dans les réglages de cette section.</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{{ 'section-featured-product.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Produit vedette",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Produit"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description (facultatif, remplace la description produit)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Produit vedette"
+    }
+  ]
+}
+{% endschema %}
