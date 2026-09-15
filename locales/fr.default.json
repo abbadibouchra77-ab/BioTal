@@ -1,7 +1,8 @@
 {
   "general": {
     "meta": {
-      "tagline": "Compléments alimentaires bien-être, routine sommeil & sérénité"
+      "tagline": "Compléments alimentaires bien-être, routine sommeil & sérénité",
+      "tagged_with": "Étiqueté « {{ tags }} »"
     },
     "accessibility": {
       "skip_to_content": "Aller directement au contenu",

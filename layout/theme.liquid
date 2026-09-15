@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon -%}
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ settings.favicon | image_url: width: 16, height: 16 }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
+  {%- else -%}
+    <link rel="icon" type="image/svg+xml" href="{{ 'favicon-placeholder.svg' | asset_url }}">
+  {%- endif -%}
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; {{ 'general.meta.tagged_with' | t: tags: current_tags | join: ', ' }}{% endif -%}
+    {%- if current_page != 1 %} &ndash; {{ 'general.pagination.page' | t: number: current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+
+  {%- comment -%} Préconnexions performance {%- endcomment -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+  {%- comment -%} Polices — Google Fonts, chargement non bloquant, font-display swap {%- endcomment -%}
+  {%- case settings.type_header_font -%}
+    {%- when 'playfair' -%}
+      {%- assign heading_font_url = 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap' -%}
+      {%- assign heading_font_stack = "'Playfair Display', Georgia, 'Times New Roman', serif" -%}
+    {%- else -%}
+      {%- assign heading_font_url = 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&display=swap' -%}
+      {%- assign heading_font_stack = "'Fraunces', Georgia, 'Times New Roman', serif" -%}
+  {%- endcase -%}
+  {%- case settings.type_body_font -%}
+    {%- when 'work_sans' -%}
+      {%- assign body_font_url = 'https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap' -%}
+      {%- assign body_font_stack = "'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" -%}
+    {%- else -%}
+      {%- assign body_font_url = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' -%}
+      {%- assign body_font_stack = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" -%}
+  {%- endcase -%}
+  <link rel="stylesheet" href="{{ heading_font_url }}" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ body_font_url }}" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="{{ heading_font_url }}">
+    <link rel="stylesheet" href="{{ body_font_url }}">
+  </noscript>
+
+  {%- comment -%} Variables de thème — palette et échelle typographique {%- endcomment -%}
+  <style>
+    :root{
+      --color-primary: {{ settings.colors_primary }};
+      --color-primary-dark: {{ settings.colors_primary | color_darken: 12 }};
+      --color-accent: {{ settings.colors_accent }};
+      --color-accent-dark: {{ settings.colors_accent | color_darken: 12 }};
+      --color-accent-ink: {{ settings.colors_accent | color_darken: 25 }};
+      --color-bg: {{ settings.colors_background }};
+      --color-bg-secondary: {{ settings.colors_background_secondary }};
+      --color-text: {{ settings.colors_text }};
+      --color-text-muted: {{ settings.colors_text | color_mix: settings.colors_background, 55 }};
+      --color-white: {{ settings.colors_white }};
+      --color-success: {{ settings.colors_success }};
+      --color-error: {{ settings.colors_error }};
+      --font-heading: {{ heading_font_stack }};
+      --font-body: {{ body_font_stack }};
+      --font-size-base: {{ settings.type_body_scale | default: 100 | divided_by: 100.0 }}rem;
+      --heading-scale: {{ settings.type_header_scale | default: 100 | divided_by: 100.0 }};
+      --page-width: {{ settings.page_width }}px;
+      --section-spacing: {{ settings.spacing_sections }}px;
+      --radius: {{ settings.radius_base }}px;
+      --header-height: 72px;
+    }
+    h1,h2,h3,h4,h5,h6{ font-size: calc(1em * var(--heading-scale)); }
+  </style>
+
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+
+  {{ content_for_header }}
+</head>
+
+<body class="template-{{ request.page_type }}">
+  <a class="skip-to-content btn btn--primary" href="#MainContent">
+    {{ 'general.accessibility.skip_to_content' | t }}
+  </a>
+
+  {%- section 'announcement-bar' -%}
+  {%- section 'header' -%}
+
+  <main id="MainContent" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {%- section 'newsletter' -%}
+  {%- section 'footer' -%}
+
+  {%- if settings.cart_type == 'drawer' -%}
+    {%- render 'cart-drawer' -%}
+  {%- endif -%}
+
+  <script>
+    window.Shopify = window.Shopify || {};
+    window.Shopify.routes = { root: {{ routes.root_url | json }} };
+    window.themeMoneyFormat = {{ shop.money_format | json }};
+  </script>
+  <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+</body>
+</html>
