@@ -91,7 +91,7 @@
 }
 
 .bundle-highlight__savings {
-  color: #D9D9D9;
+  color: var(--color-neutral-300);
   font-weight: 700;
   margin: 0;
 }

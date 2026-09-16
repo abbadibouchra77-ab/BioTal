@@ -1,5 +1,14 @@
 /* BioTal — Design system de base (variables, reset, typographie, utilitaires) */
 
+:root {
+  /* Ton neutre gris utilisé sur certains éléments d'accent (cf. édits Cowork du
+     2026-09-15) : centralisé ici en variable plutôt qu'en valeurs hexadécimales
+     répétées, pour rester cohérent avec le principe « pas de couleur codée en dur »
+     et permettre un futur ajustement en un seul endroit. */
+  --color-neutral-300: #D9D9D9;
+  --color-neutral-400: #C4C4C4;
+}
+
 *,
 *::before,
 *::after {
@@ -156,7 +165,7 @@ summary:focus-visible,
 
 .section-header__eyebrow {
   display: inline-block;
-  color: #D9D9D9;
+  color: var(--color-neutral-300);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -200,12 +209,12 @@ summary:focus-visible,
 }
 
 .btn--accent {
-  background: #D9D9D9;
+  background: var(--color-neutral-300);
   color: var(--color-text);
 }
 
 .btn--accent:hover {
-  background: #C4C4C4;
+  background: var(--color-neutral-400);
 }
 
 .btn--outline {
@@ -336,7 +345,7 @@ summary:focus-visible,
 }
 
 .price--on-sale .price__regular {
-  color: #D9D9D9;
+  color: var(--color-neutral-300);
 }
 
 /* Skeleton / loading */

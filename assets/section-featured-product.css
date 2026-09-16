@@ -65,7 +65,7 @@
 }
 
 .stock-indicator--low {
-  color: #D9D9D9;
+  color: var(--color-neutral-300);
 }
 
 .stock-indicator--out {
