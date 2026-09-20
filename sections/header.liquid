@@ -2,7 +2,7 @@
   assign menu = section.settings.menu
 -%}
 <header class="site-header" data-header>
-  {%- if section.settings.announcement_text_1 != blank or section.settings.announcement_text_2 != blank -%}
+  {%- if section.settings.announcement_text_1 != blank or section.settings.announcement_text_2 != blank or section.settings.announcement_text_3 != blank -%}
     <div class="site-header__announcement">
       <div class="page-width site-header__announcement-inner">
         {%- if section.settings.announcement_text_1 != blank -%}
@@ -10,6 +10,9 @@
         {%- endif -%}
         {%- if section.settings.announcement_text_2 != blank -%}
           <p>{%- render 'icon', name: 'shield', size: 14 -%} {{ section.settings.announcement_text_2 }}</p>
+        {%- endif -%}
+        {%- if section.settings.announcement_text_3 != blank -%}
+          <p>{%- render 'icon', name: 'check-circle', size: 14 -%} {{ section.settings.announcement_text_3 }}</p>
         {%- endif -%}
       </div>
     </div>
@@ -123,6 +126,12 @@
       "id": "announcement_text_2",
       "label": "Mention de réassurance 2",
       "default": "Satisfait ou remboursé sous 30 jours"
+    },
+    {
+      "type": "text",
+      "id": "announcement_text_3",
+      "label": "Mention de réassurance 3",
+      "default": "Fabriqué en Allemagne"
     }
   ]
 }
