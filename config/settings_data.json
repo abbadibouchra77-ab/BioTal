@@ -11,8 +11,8 @@
   "current": {
     "colors_primary": "#1E4638",
     "colors_accent": "#C9A227",
-    "colors_background": "#FAF7F0",
-    "colors_background_secondary": "#E3EAE1",
+    "colors_background": "#FFFFFF",
+    "colors_background_secondary": "#FFFFFF",
     "colors_text": "#1A1A1A",
     "colors_white": "#FFFFFF",
     "colors_success": "#3F6B4E",
@@ -64,8 +64,8 @@
     "BioTal — Lancement": {
       "colors_primary": "#1E4638",
       "colors_accent": "#C9A227",
-      "colors_background": "#FAF7F0",
-      "colors_background_secondary": "#E3EAE1",
+      "colors_background": "#FFFFFF",
+      "colors_background_secondary": "#FFFFFF",
       "colors_text": "#1A1A1A",
       "colors_white": "#FFFFFF",
       "type_header_font": "fraunces",
