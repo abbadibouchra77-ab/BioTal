@@ -27,7 +27,7 @@
           <img
             src="{{ settings.logo | image_url: width: 300 }}"
             srcset="{{ settings.logo | image_url: width: 150 }} 150w, {{ settings.logo | image_url: width: 300 }} 300w"
-            alt="{{ shop.name }}"
+            alt="BioTal"
             width="{{ settings.logo_width }}"
             height="{{ settings.logo_width | divided_by: settings.logo.aspect_ratio | default: settings.logo_width }}"
             style="width: {{ settings.logo_width }}px; height: auto;"
@@ -35,7 +35,7 @@
             fetchpriority="high"
           >
         {%- else -%}
-          <span class="site-header__logo-text">{{ shop.name }}</span>
+          <span class="site-header__logo-text">BioTal</span>
         {%- endif -%}
       </a>
 

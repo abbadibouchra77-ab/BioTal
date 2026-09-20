@@ -5,14 +5,14 @@
         {%- if settings.logo -%}
           <img
             src="{{ settings.logo | image_url: width: 220 }}"
-            alt="{{ shop.name }}"
+            alt="BioTal"
             width="140"
             height="{{ 140 | divided_by: settings.logo.aspect_ratio | default: 60 }}"
             loading="lazy"
             style="width:140px;height:auto;"
           >
         {%- else -%}
-          <p class="site-footer__logo-text">{{ shop.name }}</p>
+          <p class="site-footer__logo-text">BioTal</p>
         {%- endif -%}
         {%- if section.settings.tagline != blank -%}
           <p class="site-footer__tagline">{{ section.settings.tagline }}</p>

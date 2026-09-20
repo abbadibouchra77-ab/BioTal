@@ -31,7 +31,7 @@
     {{ page_title }}
     {%- if current_tags %} &ndash; {{ 'general.meta.tagged_with' | t: tags: current_tags | join: ', ' }}{% endif -%}
     {%- if current_page != 1 %} &ndash; {{ 'general.pagination.page' | t: number: current_page }}{% endif -%}
-    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    {%- unless page_title contains 'BioTal' %} &ndash; BioTal{% endunless -%}
   </title>
 
   {%- comment -%} Préconnexions performance {%- endcomment -%}
