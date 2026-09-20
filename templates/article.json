@@ -12,8 +12,7 @@
     "main": {
       "type": "main-article",
       "custom_css": [
-        "h2 {font-size: 32px;}",
-        ".article__hero img {width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; max-height: 420px; }"
+        "h2 {font-size: 32px;}"
       ],
       "settings": {}
     }
