@@ -15,11 +15,11 @@
 
 .article__hero img {
   width: 100%;
-    height: auto;
-      aspect-ratio: 16 / 9;
-        object-fit: cover;
-          max-height: 420px;
-          }
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  max-height: 640px;
+}
 
 .article__tags {
   display: flex;
