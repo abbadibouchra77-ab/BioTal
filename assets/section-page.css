@@ -12,7 +12,7 @@
   margin-bottom: 1em;
 }
 
-.rte a {
+.rte a:not(.btn) {
   text-decoration: underline;
   color: var(--color-primary-dark);
 }
