@@ -4,6 +4,19 @@
 >
   {%- if recommendations.performed and recommendations.products_count > 0 -%}
     <div class="page-width">
+      {%- if section.settings.image -%}
+        <div class="cross-sell__banner">
+          <img
+            src="{{ section.settings.image | image_url: width: 1400 }}"
+            srcset="{{ section.settings.image | image_url: width: 700 }} 700w, {{ section.settings.image | image_url: width: 1100 }} 1100w, {{ section.settings.image | image_url: width: 1400 }} 1400w"
+            sizes="100vw"
+            alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+            loading="lazy"
+          >
+        </div>
+      {%- endif -%}
       <div class="section-header">
         <h2>
           {%- if section.settings.heading != blank -%}
@@ -22,12 +35,18 @@
   {%- endif -%}
 </product-recommendations>
 
+{{ 'section-cross-sell.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'section-cross-sell.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {
   "name": "Complète ta routine",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image (bannière, optionnelle)"
+    },
     {
       "type": "text",
       "id": "heading",
