@@ -106,12 +106,14 @@
       "add_to_cart": "Ajouter au panier"
     },
     "bundle_highlight": {
-      "default_heading": "Le bundle Routine Minéraux",
-      "default_subheading": "Magnésium 4-fold Complex + Vitamine D3, pensés pour se compléter au sein d'une même routine.",
-      "price_label": "Prix bundle",
-      "compare_label": "Prix à l'unité",
-      "savings": "Vous économisez {{ amount }}",
-      "cta": "Composer mon bundle"
+      "default_heading": "Composez votre routine",
+      "default_subheading": "Choisissez les produits que vous voulez combiner et profitez d'une réduction sur le total.",
+      "discount_badge": "-{{ percent }}%",
+      "subtotal_label": "Sous-total",
+      "discount_label": "Réduction ({{ percent }}%)",
+      "total_label": "Total",
+      "empty_hint": "Sélectionnez au moins un produit pour composer votre routine.",
+      "cta": "Composer ma routine"
     },
     "product_grid": {
       "default_heading": "Nos essentiels",

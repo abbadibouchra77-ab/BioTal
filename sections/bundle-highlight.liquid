@@ -1,18 +1,19 @@
-{%- liquid
-  assign product = section.settings.product
--%}
-<section class="bundle-highlight section" id="shopify-section-{{ section.id }}">
+<section class="bundle-highlight section bundle-highlight--{{ section.settings.image_position }}" id="shopify-section-{{ section.id }}">
   <div class="page-width">
-    <div class="bundle-highlight__card card card--soft">
+    <bundle-builder
+      class="bundle-highlight__card card card--soft"
+      data-discount-code="{{ section.settings.discount_code | escape }}"
+      data-discount-percent="{{ section.settings.discount_percent }}"
+    >
       <div class="bundle-highlight__media">
-        {%- if product.featured_media -%}
+        {%- if section.settings.image -%}
           <img
-            src="{{ product.featured_media | image_url: width: 700 }}"
-            srcset="{{ product.featured_media | image_url: width: 450 }} 450w, {{ product.featured_media | image_url: width: 700 }} 700w"
+            src="{{ section.settings.image | image_url: width: 700 }}"
+            srcset="{{ section.settings.image | image_url: width: 450 }} 450w, {{ section.settings.image | image_url: width: 700 }} 700w"
             sizes="(min-width: 990px) 35vw, 100vw"
-            alt="{{ product.featured_media.alt | default: product.title | escape }}"
-            width="{{ product.featured_media.width }}"
-            height="{{ product.featured_media.height }}"
+            alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
             loading="lazy"
           >
         {%- else -%}
@@ -21,7 +22,7 @@
       </div>
 
       <div class="bundle-highlight__content">
-        <span class="badge badge--primary">{{ 'products.badges.bundle' | t }}</span>
+        <span class="badge badge--primary">{{ 'sections.bundle_highlight.discount_badge' | t: percent: section.settings.discount_percent }}</span>
         <h2>
           {%- if section.settings.heading != blank -%}
             {{ section.settings.heading }}
@@ -38,64 +39,93 @@
         </div>
 
         {%- if section.blocks.size > 0 -%}
-          <ul class="bundle-highlight__included">
+          <ul class="bundle-highlight__picker">
             {%- for block in section.blocks -%}
-              {%- if block.settings.product != blank -%}
-                <li {{ block.shopify_attributes }}>
-                  <span class="bundle-highlight__included-media">
-                    {%- if block.settings.product.featured_media -%}
-                      <img
-                        src="{{ block.settings.product.featured_media | image_url: width: 100 }}"
-                        alt=""
-                        width="44"
-                        height="44"
-                        loading="lazy"
-                      >
-                    {%- else -%}
-                      {{ 'product-1' | placeholder_svg_tag: 'bundle-highlight__included-placeholder' }}
-                    {%- endif -%}
-                  </span>
-                  <span class="bundle-highlight__included-text">
-                    {{ block.settings.product.title }}
-                    {%- if block.settings.quantity > 1 %} × {{ block.settings.quantity }}{% endif -%}
-                  </span>
+              {%- assign product = block.settings.product -%}
+              {%- if product != blank -%}
+                {%- assign variant = product.selected_or_first_available_variant -%}
+                <li class="bundle-highlight__option" {{ block.shopify_attributes }}>
+                  <label class="bundle-highlight__option-label">
+                    <input
+                      type="checkbox"
+                      class="bundle-highlight__checkbox"
+                      data-bundle-item
+                      data-variant-id="{{ variant.id }}"
+                      data-price="{{ variant.price }}"
+                      {% unless variant.available %}disabled{% endunless %}
+                    >
+                    <span class="bundle-highlight__option-media">
+                      {%- if product.featured_media -%}
+                        <img
+                          src="{{ product.featured_media | image_url: width: 100 }}"
+                          alt=""
+                          width="44"
+                          height="44"
+                          loading="lazy"
+                        >
+                      {%- else -%}
+                        {{ 'product-1' | placeholder_svg_tag: 'bundle-highlight__option-placeholder' }}
+                      {%- endif -%}
+                    </span>
+                    <span class="bundle-highlight__option-info">
+                      <span class="bundle-highlight__option-title">
+                        {{ product.title }}
+                        {%- unless variant.available %} — {{ 'products.form.sold_out' | t }}{% endunless -%}
+                      </span>
+                      {%- render 'price', product: product, variant: variant -%}
+                    </span>
+                  </label>
                 </li>
               {%- endif -%}
             {%- endfor -%}
           </ul>
-        {%- endif -%}
 
-        {%- if product -%}
-          {%- assign variant = product.selected_or_first_available_variant -%}
-          <div class="bundle-highlight__prices">
-            <div class="bundle-highlight__price-block">
-              <span class="bundle-highlight__price-label">{{ 'sections.bundle_highlight.price_label' | t }}</span>
-              {%- render 'price', product: product, variant: variant -%}
+          <div class="bundle-highlight__summary" data-bundle-summary hidden>
+            <div class="bundle-highlight__summary-row">
+              <span>{{ 'sections.bundle_highlight.subtotal_label' | t }}</span>
+              <span data-bundle-subtotal>—</span>
             </div>
-            {%- if variant.compare_at_price > variant.price -%}
-              {%- assign savings_amount = variant.compare_at_price | minus: variant.price | money -%}
-              <p class="bundle-highlight__savings">
-                {{ 'sections.bundle_highlight.savings' | t: amount: savings_amount }}
-              </p>
-            {%- endif -%}
+            <div class="bundle-highlight__summary-row bundle-highlight__summary-row--discount">
+              <span>{{ 'sections.bundle_highlight.discount_label' | t: percent: section.settings.discount_percent }}</span>
+              <span data-bundle-discount>—</span>
+            </div>
+            <div class="bundle-highlight__summary-row bundle-highlight__summary-row--total">
+              <span>{{ 'sections.bundle_highlight.total_label' | t }}</span>
+              <span data-bundle-total>—</span>
+            </div>
           </div>
-          <a href="{{ product.url }}" class="btn btn--primary btn--lg">{{ 'sections.bundle_highlight.cta' | t }}</a>
+
+          <button type="button" class="btn btn--primary btn--lg" data-bundle-submit disabled>
+            <span data-bundle-submit-label>{{ 'sections.bundle_highlight.cta' | t }}</span>
+          </button>
+          <p class="bundle-highlight__hint" data-bundle-hint>{{ 'sections.bundle_highlight.empty_hint' | t }}</p>
         {%- endif -%}
       </div>
-    </div>
+    </bundle-builder>
   </div>
 </section>
 
 {{ 'section-bundle-highlight.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-bundle-highlight.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
   "name": "Bundle vedette",
   "settings": [
     {
-      "type": "product",
-      "id": "product",
-      "label": "Produit bundle"
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Position de l'image",
+      "options": [
+        { "value": "left", "label": "À gauche" },
+        { "value": "right", "label": "À droite" }
+      ],
+      "default": "left"
     },
     {
       "type": "text",
@@ -106,28 +136,35 @@
       "type": "richtext",
       "id": "subheading",
       "label": "Sous-titre"
+    },
+    {
+      "type": "number",
+      "id": "discount_percent",
+      "label": "Pourcentage affiché",
+      "default": 10,
+      "info": "Sert uniquement à l'affichage (badge, ligne de réduction). Doit correspondre exactement au pourcentage réel du code de réduction ci-dessous, configuré dans Shopify Admin > Réductions."
+    },
+    {
+      "type": "text",
+      "id": "discount_code",
+      "label": "Code de réduction Shopify",
+      "info": "Le code (Admin > Réductions) appliqué automatiquement au clic sur le bouton. Doit être limité exactement aux produits proposés ci-dessous, sinon la réduction s'appliquera aussi à d'autres articles du panier."
     }
   ],
   "blocks": [
     {
-      "type": "included_product",
-      "name": "Produit inclus",
+      "type": "product",
+      "name": "Produit au choix",
       "settings": [
         {
           "type": "product",
           "id": "product",
           "label": "Produit"
-        },
-        {
-          "type": "number",
-          "id": "quantity",
-          "label": "Quantité",
-          "default": 1
         }
       ]
     }
   ],
-  "max_blocks": 6,
+  "max_blocks": 8,
   "presets": [
     {
       "name": "Bundle vedette"

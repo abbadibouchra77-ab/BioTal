@@ -1,7 +1,7 @@
 {%- liquid
   assign product = section.settings.product
 -%}
-<section class="featured-product section" id="shopify-section-{{ section.id }}">
+<section class="featured-product section featured-product--{{ section.settings.image_position }}" id="shopify-section-{{ section.id }}">
   <div class="page-width">
     {%- if product -%}
       {%- assign variant = product.selected_or_first_available_variant -%}
@@ -72,6 +72,16 @@
       "type": "richtext",
       "id": "text",
       "label": "Description (facultatif, remplace la description produit)"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Position de l'image",
+      "options": [
+        { "value": "left", "label": "À gauche" },
+        { "value": "right", "label": "À droite" }
+      ],
+      "default": "left"
     }
   ],
   "presets": [

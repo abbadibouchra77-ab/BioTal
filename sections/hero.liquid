@@ -1,4 +1,4 @@
-<section class="hero section" id="shopify-section-{{ section.id }}">
+<section class="hero section hero--{{ section.settings.image_position }}" id="shopify-section-{{ section.id }}">
   <div class="page-width hero__inner">
     <div class="hero__content">
       {%- if section.settings.badge_text != blank -%}
@@ -81,6 +81,16 @@
       "type": "image_picker",
       "id": "image",
       "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Position de l'image",
+      "options": [
+        { "value": "left", "label": "À gauche" },
+        { "value": "right", "label": "À droite" }
+      ],
+      "default": "right"
     }
   ],
   "presets": [

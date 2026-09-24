@@ -10,6 +10,10 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
   }
+
+  .featured-product--right .featured-product__media {
+    order: 2;
+  }
 }
 
 .featured-product__media {
