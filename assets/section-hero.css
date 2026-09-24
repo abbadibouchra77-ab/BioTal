@@ -10,6 +10,10 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
   }
+
+  .hero--left .hero__media {
+    order: -1;
+  }
 }
 
 .hero__content {
