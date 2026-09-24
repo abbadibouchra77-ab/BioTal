@@ -12,257 +12,150 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "badge_text": "Offre de lancement",
-        "heading": "",
-        "subheading": "",
-        "button_label": "Découvrir Magnesium 4-fold Complex",
-        "button_link": "",
+        "badge_text": "Livraison incluse en France",
+        "heading": "Magnésium, Oméga 3, Collagène : vos essentiels du quotidien",
+        "subheading": "<p>Des compléments fabriqués en Europe, une composition 100 % affichée et des formules pensées pour une routine simple. <strong>Satisfait ou remboursé 14 jours.</strong></p>",
+        "button_label": "Je découvre les incontournables",
+        "button_link": "shopify://collections/nos-incontournables",
         "image": "shopify://shop_images/dfd27e67-042a-43fb-9033-395f14234ad9.jpg"
       }
     },
     "trust-bar": {
       "type": "trust-bar",
       "blocks": {
-        "item-1": {
-          "type": "item",
-          "settings": {
-            "icon": "truck",
-            "title": "Livraison incluse",
-            "text": "Expédiée depuis l'Europe vers la France"
-          }
-        },
-        "item-2": {
-          "type": "item",
-          "settings": {
-            "icon": "shield",
-            "title": "Paiement sécurisé",
-            "text": "Vos données sont protégées"
-          }
-        },
-        "item-3": {
-          "type": "item",
-          "settings": {
-            "icon": "check-circle",
-            "title": "Satisfait ou remboursé",
-            "text": "14 jours pour changer d'avis"
-          }
-        },
-        "item-4": {
-          "type": "item",
-          "settings": {
-            "icon": "leaf",
-            "title": "Fabriqué en Europe",
-            "text": "Standards de qualité européens"
-          }
-        }
+        "item-1": { "type": "item", "settings": { "icon": "truck", "title": "Livraison incluse", "text": "Expédiée depuis l'Europe vers la France" } },
+        "item-2": { "type": "item", "settings": { "icon": "check-circle", "title": "Satisfait ou remboursé", "text": "14 jours pour changer d'avis" } },
+        "item-3": { "type": "item", "settings": { "icon": "leaf", "title": "Fabriqué en Europe", "text": "Composition complète affichée" } },
+        "item-4": { "type": "item", "settings": { "icon": "shield", "title": "Paiement sécurisé", "text": "Vos données sont protégées" } }
       },
-      "block_order": [
-        "item-1",
-        "item-2",
-        "item-3",
-        "item-4"
-      ],
+      "block_order": ["item-1", "item-2", "item-3", "item-4"],
       "settings": {}
     },
-    "featured-product": {
+    "incontournables": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "nos-incontournables",
+        "heading": "Nos incontournables",
+        "subheading": "<p>Les compléments les plus utilisés au quotidien. Ajout au panier en un clic.</p>",
+        "center_heading": true,
+        "products_to_show": 8,
+        "columns_desktop": "4",
+        "show_view_all": true
+      }
+    },
+    "star-magnesium": {
       "type": "featured-product",
       "settings": {
-        "product": "turmeric-piperine-60-capsules",
-        "text": ""
+        "product": "magnesium-4-fold-complex-60-vegan-tablets",
+        "text": "<p><strong>4 formes de magnésium dans un seul comprimé.</strong> Bisglycinate, citrate, malate et taurate : une absorption complémentaire et une bonne tolérance digestive.</p><p>✔ Le magnésium contribue à réduire la fatigue<br>✔ Il contribue au fonctionnement normal du système nerveux<br>✔ 1 comprimé par jour · 2 mois de routine · 100 % vegan</p>"
       }
     },
-    "product_grid_9RkMYC": {
-      "type": "product-grid",
-      "blocks": {
-        "product_kyLDYf": {
-          "type": "product",
-          "settings": {
-            "product": "magnesium-4-fold-complex-60-vegan-tablets"
-          }
-        },
-        "product_L44W3m": {
-          "type": "product",
-          "settings": {
-            "product": "vitamin-d3-k2-1-700-drops-1-000-i-u-50ml"
-          }
-        },
-        "product_dmaWFE": {
-          "type": "product",
-          "settings": {
-            "product": "turmeric-piperine-60-capsules"
-          }
-        },
-        "product_3gwRCC": {
-          "type": "product",
-          "settings": {
-            "product": ""
-          }
-        },
-        "product_iKmTfW": {
-          "type": "product",
-          "settings": {
-            "product": ""
-          }
-        },
-        "product_7fpjKp": {
-          "type": "product",
-          "settings": {
-            "product": ""
-          }
-        },
-        "product_n6eLhV": {
-          "type": "product",
-          "settings": {
-            "product": ""
-          }
-        },
-        "product_WLdqbW": {
-          "type": "product",
-          "settings": {
-            "product": ""
-          }
-        }
-      },
-      "block_order": [
-        "product_kyLDYf",
-        "product_L44W3m",
-        "product_dmaWFE",
-        "product_3gwRCC",
-        "product_iKmTfW",
-        "product_7fpjKp",
-        "product_n6eLhV",
-        "product_WLdqbW"
-      ],
-      "name": "Grille produits",
+    "star-omega": {
+      "type": "featured-product",
       "settings": {
-        "heading": "",
-        "subheading": "",
-        "center_heading": true,
-        "view_all_link": ""
+        "product": "omega-3-max-35-25-120-capsules",
+        "text": "<p><strong>Notre oméga 3 le plus concentré : 35 % d'EPA + 25 % de DHA.</strong> Deux fois plus d'actifs qu'une huile de poisson standard, issus de poissons de pêche sauvage.</p><p>✔ L'EPA et le DHA contribuent à une fonction cardiaque normale*<br>✔ Le DHA contribue au fonctionnement normal du cerveau**<br>✔ Forme triglycéride · fraîcheur contrôlée (TOTOX) · 2 mois de routine</p><p><em>*Avec 250 mg d'EPA et de DHA par jour. **Avec 250 mg de DHA par jour.</em></p>"
       }
     },
-    "image_text_3CeNUm": {
+    "star-collagene": {
+      "type": "featured-product",
+      "settings": {
+        "product": "collagene-premium-plus-acide-hyaluronique-180-gelules",
+        "text": "<p><strong>Votre routine beauté commence de l'intérieur.</strong> Collagène hydrolysé, 8 % d'acide hyaluronique et 6 micronutriments dans une seule gélule.</p><p>✔ La vitamine C contribue à la formation normale de collagène pour la fonction normale de la peau<br>✔ Le zinc et le sélénium contribuent au maintien de cheveux et d'ongles normaux<br>✔ 180 gélules = 3 mois de routine</p>"
+      }
+    },
+    "duo": {
+      "type": "bundle-highlight",
+      "blocks": {
+        "inc-1": { "type": "included_product", "settings": { "product": "magnesium-4-fold-complex-60-vegan-tablets", "quantity": 1 } },
+        "inc-2": { "type": "included_product", "settings": { "product": "vitamin-d3-k2-1-700-drops-1-000-i-u-50ml", "quantity": 1 } }
+      },
+      "block_order": ["inc-1", "inc-2"],
+      "settings": {
+        "product": "duo-serenite-magnesium-4-en-1-vitamine-d3-k2",
+        "heading": "Le Duo Sérénité : magnésium + vitamine D3 & K2",
+        "subheading": "<p>Les deux compléments les plus utilisés, réunis dans un seul pack <strong>moins cher qu'achetés séparément</strong>. La vitamine D contribue au fonctionnement normal du système immunitaire, le magnésium à réduire la fatigue.</p>"
+      }
+    },
+    "objectifs": {
+      "type": "collection-list",
+      "blocks": {
+        "obj-1": { "type": "collection", "settings": { "collection": "sommeil-stress", "title": "Sommeil & Stress", "image": "shopify://shop_images/71520e7e-e179-4a13-a56c-cfcf48119570.jpg" } },
+        "obj-2": { "type": "collection", "settings": { "collection": "immunite-vitalite", "title": "Immunité & Vitalité", "image": "shopify://shop_images/2dac7a8c-cdaf-4130-ac16-b9581e5e038e.jpg" } },
+        "obj-3": { "type": "collection", "settings": { "collection": "beaute-collagene", "title": "Beauté & Collagène", "image": "shopify://shop_images/90d77e51-1154-47aa-b2e7-91e35d2c5ebe.jpg" } },
+        "obj-4": { "type": "collection", "settings": { "collection": "omega-3", "title": "Oméga 3", "image": "shopify://shop_images/428954f2-5669-40ad-a369-f21c22793b3b.jpg" } },
+        "obj-5": { "type": "collection", "settings": { "collection": "energie-forme", "title": "Énergie & Forme", "image": "shopify://shop_images/11e7ca3d-806d-42f8-b7be-31aa67c2a880.jpg" } },
+        "obj-6": { "type": "collection", "settings": { "collection": "plantes-tradition", "title": "Plantes & Tradition", "image": "shopify://shop_images/b26c8a7f-4de6-4a92-a31c-5ffaceb0a5b6.jpg" } }
+      },
+      "block_order": ["obj-1", "obj-2", "obj-3", "obj-4", "obj-5", "obj-6"],
+      "settings": {
+        "heading": "Vous cherchez autre chose ?",
+        "subheading": "<p>Explorez toute la gamme par objectif.</p>",
+        "center_heading": true,
+        "columns_desktop": "3"
+      }
+    },
+    "pourquoi": {
       "type": "image-text",
       "blocks": {
-        "point_3XfbzU": {
-          "type": "point",
-          "settings": {
-            "text": "Formulé et fabriqué en Europe"
-          }
-        },
-        "point_Lx4riX": {
-          "type": "point",
-          "settings": {
-            "text": "Ingrédients sélectionnés avec soin"
-          }
-        },
-        "point_JDkVTj": {
-          "type": "point",
-          "settings": {
-            "text": "Routine simple, sans excès"
-          }
-        }
+        "w-1": { "type": "point", "settings": { "text": "Formulé et fabriqué en Europe" } },
+        "w-2": { "type": "point", "settings": { "text": "Composition complète et précautions sur chaque fiche" } },
+        "w-3": { "type": "point", "settings": { "text": "Formes assimilables et dosages clairs" } },
+        "w-4": { "type": "point", "settings": { "text": "Livraison incluse, 14 jours pour changer d'avis" } }
       },
-      "block_order": [
-        "point_3XfbzU",
-        "point_Lx4riX",
-        "point_JDkVTj"
-      ],
-      "name": "Image et texte",
+      "block_order": ["w-1", "w-2", "w-3", "w-4"],
       "settings": {
         "image": "shopify://shop_images/Duo_serenite.png",
         "image_position": "left",
-        "background": "cream",
-        "eyebrow": "Le duo qui accompagne vos soirées",
-        "heading": "Duo Sérénité : Magnésium 4-en-1 + Vitamine D3 & K2",
-        "text": "<p>Le magnésium 4-en-1 favorise la détente musculaire et nerveuse, la vitamine D3 & K2 soutient votre vitalité au quotidien. Deux formules complémentaires, pensées en Europe pour accompagner vos soirées et vos matins.</p>",
-        "button_label": "Découvrir le Duo Sérénité",
-        "button_link": "https://biotal.fr/products/duo-serenite-magnesium-4-en-1-vitamine-d3-k2"
+        "background": "sage",
+        "eyebrow": "Pourquoi BioTal",
+        "heading": "La transparence avant tout",
+        "text": "<p>Vous savez exactement ce que vous prenez : composition, dosage, durée de la cure et précautions sont affichés sur chaque produit. Aucune promesse miracle, juste des faits.</p>",
+        "button_label": "Voir tous nos compléments",
+        "button_link": "shopify://collections/tous-nos-complements"
       }
     },
     "how-it-works": {
       "type": "how-it-works",
       "blocks": {
-        "step-1": {
-          "type": "step",
-          "settings": {
-            "title": "Je choisis ma routine",
-            "text": "Un produit ciblé ou un bundle pensé pour se compléter."
-          }
-        },
-        "step-2": {
-          "type": "step",
-          "settings": {
-            "title": "J'intègre le geste quotidien",
-            "text": "Un rituel simple, au moment qui vous convient le mieux."
-          }
-        },
-        "step-3": {
-          "type": "step",
-          "settings": {
-            "title": "Je suis ma régularité",
-            "text": "La constance fait la différence, jour après jour."
-          }
-        }
+        "step-1": { "type": "step", "settings": { "title": "Je choisis mes essentiels", "text": "Un produit, plusieurs, ou le Duo Sérénité déjà composé." } },
+        "step-2": { "type": "step", "settings": { "title": "Je reçois ma commande", "text": "Livraison incluse en France, suivi par e-mail." } },
+        "step-3": { "type": "step", "settings": { "title": "J'installe ma routine", "text": "Un geste simple chaque jour : la régularité fait la différence." } }
       },
-      "block_order": [
-        "step-1",
-        "step-2",
-        "step-3"
-      ],
+      "block_order": ["step-1", "step-2", "step-3"],
       "settings": {
-        "heading": "",
-        "subheading": ""
+        "heading": "Votre routine en 3 étapes",
+        "subheading": "<p>Simple, rapide, sans engagement.</p>"
       }
     },
     "reviews": {
       "type": "reviews",
       "disabled": true,
-      "settings": {
-        "heading": ""
-      }
+      "settings": { "heading": "" }
     },
     "faq": {
       "type": "faq",
       "blocks": {
-        "q-1": {
-          "type": "question",
-          "settings": {
-            "question": "Quand vais-je ressentir les effets de ma routine ?",
-            "answer": "<p>Chaque routine bien-être est différente : nous recommandons une prise régulière sur plusieurs semaines, en complément d'une hygiène de vie équilibrée.</p>"
-          }
-        },
-        "q-2": {
-          "type": "question",
-          "settings": {
-            "question": "Comment sont fabriqués les produits BioTal ?",
-            "answer": "<p>Nos formules sont élaborées et fabriquées en Europe selon des standards de qualité stricts, puis expédiées directement vers la France.</p>"
-          }
-        },
-        "q-3": {
-          "type": "question",
-          "settings": {
-            "question": "Puis-je me faire rembourser ?",
-            "answer": "<p>Oui, vous disposez de 14 jours pour changer d'avis. Retrouvez les détails dans notre politique de retour.</p>"
-          }
-        }
+        "q-1": { "type": "question", "settings": { "question": "La livraison est-elle vraiment incluse ?", "answer": "<p>Oui : le prix affiché comprend la livraison en France métropolitaine. Aucun frais caché au moment du paiement.</p>" } },
+        "q-2": { "type": "question", "settings": { "question": "Par quoi commencer ?", "answer": "<p>Le magnésium et la vitamine D sont les compléments les plus utilisés au quotidien : notre Duo Sérénité les réunit à prix réduit. Pour la beauté, commencez par le collagène ; pour vos oméga 3, la formule Max est la plus concentrée.</p>" } },
+        "q-3": { "type": "question", "settings": { "question": "Puis-je combiner plusieurs compléments ?", "answer": "<p>Oui, nos produits sont pensés pour se compléter. Évitez de cumuler deux sources des mêmes vitamines (par exemple deux produits à la vitamine D) et lisez les précautions de chaque fiche. En cas de traitement, de grossesse ou d'allaitement, demandez l'avis d'un professionnel de santé.</p>" } },
+        "q-4": { "type": "question", "settings": { "question": "Combien de temps dure un pot ?", "answer": "<p>De 30 jours pour les gummies à près de 2 ans pour la vitamine D3 4000 UI. La durée exacte est indiquée dans le mode d'emploi de chaque fiche.</p>" } },
+        "q-5": { "type": "question", "settings": { "question": "Puis-je me faire rembourser ?", "answer": "<p>Oui, vous disposez de 14 jours pour changer d'avis. Retrouvez les détails dans notre politique de retour.</p>" } }
       },
-      "block_order": [
-        "q-1",
-        "q-2",
-        "q-3"
-      ],
-      "settings": {
-        "heading": ""
-      }
+      "block_order": ["q-1", "q-2", "q-3", "q-4", "q-5"],
+      "settings": { "heading": "Vos questions, nos réponses" }
     }
   },
   "order": [
     "hero",
     "trust-bar",
-    "featured-product",
-    "product_grid_9RkMYC",
-    "image_text_3CeNUm",
+    "incontournables",
+    "star-magnesium",
+    "star-omega",
+    "star-collagene",
+    "duo",
+    "objectifs",
+    "pourquoi",
     "how-it-works",
     "reviews",
     "faq"
