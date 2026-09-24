@@ -104,6 +104,7 @@
     "duo": {
       "type": "bundle-highlight",
       "settings": {
+        "image": "shopify://shop_images/BioTal-Compo.jpg",
         "image_position": "right",
         "heading": "Composer votre routine en choisissant vos produits",
         "subheading": "<p>Choisissez librement parmi tous nos compléments et profitez de <strong>10% de réduction</strong> sur votre sélection.</p>",
