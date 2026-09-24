@@ -113,7 +113,8 @@
       "discount_label": "Réduction ({{ percent }}%)",
       "total_label": "Total",
       "empty_hint": "Sélectionnez au moins un produit pour composer votre routine.",
-      "cta": "Composer ma routine"
+      "cta": "Composer ma routine",
+      "add_to_cart": "Ajouter au panier"
     },
     "product_grid": {
       "default_heading": "Nos essentiels",

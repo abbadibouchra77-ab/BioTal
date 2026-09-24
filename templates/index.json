@@ -99,27 +99,9 @@
     },
     "duo": {
       "type": "bundle-highlight",
-      "blocks": {
-        "inc-1": {
-          "type": "product",
-          "settings": {
-            "product": "magnesium-4-fold-complex-60-vegan-tablets"
-          }
-        },
-        "inc-2": {
-          "type": "product",
-          "settings": {
-            "product": "vitamin-d3-k2-1-700-drops-1-000-i-u-50ml"
-          }
-        }
-      },
-      "block_order": [
-        "inc-1",
-        "inc-2"
-      ],
       "settings": {
-        "heading": "Le Duo Sérénité : magnésium + vitamine D3 & K2",
-        "subheading": "<p>Les deux compléments les plus utilisés. Composez votre routine avec l'un, l'autre, ou les deux, et profitez de <strong>10% de réduction</strong> sur votre sélection. La vitamine D contribue au fonctionnement normal du système immunitaire, le magnésium à réduire la fatigue.</p>",
+        "heading": "Composez votre routine bien-être",
+        "subheading": "<p>Choisissez librement parmi tous nos compléments et profitez de <strong>10% de réduction</strong> sur votre sélection.</p>",
         "discount_percent": 10,
         "discount_code": "ROUTINE10"
       }
@@ -128,7 +110,6 @@
       "type": "bundle-highlight",
       "name": "Bundle vedette",
       "settings": {
-        "product": "",
         "heading": "",
         "subheading": ""
       }

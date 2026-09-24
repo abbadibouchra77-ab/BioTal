@@ -38,45 +38,46 @@
           {%- endif -%}
         </div>
 
-        {%- if section.blocks.size > 0 -%}
+        <button type="button" class="btn btn--primary btn--lg" data-bundle-reveal>
+          {{ 'sections.bundle_highlight.cta' | t }}
+        </button>
+
+        <div class="bundle-highlight__panel" data-bundle-panel hidden>
           <ul class="bundle-highlight__picker">
-            {%- for block in section.blocks -%}
-              {%- assign product = block.settings.product -%}
-              {%- if product != blank -%}
-                {%- assign variant = product.selected_or_first_available_variant -%}
-                <li class="bundle-highlight__option" {{ block.shopify_attributes }}>
-                  <label class="bundle-highlight__option-label">
-                    <input
-                      type="checkbox"
-                      class="bundle-highlight__checkbox"
-                      data-bundle-item
-                      data-variant-id="{{ variant.id }}"
-                      data-price="{{ variant.price }}"
-                      {% unless variant.available %}disabled{% endunless %}
-                    >
-                    <span class="bundle-highlight__option-media">
-                      {%- if product.featured_media -%}
-                        <img
-                          src="{{ product.featured_media | image_url: width: 100 }}"
-                          alt=""
-                          width="44"
-                          height="44"
-                          loading="lazy"
-                        >
-                      {%- else -%}
-                        {{ 'product-1' | placeholder_svg_tag: 'bundle-highlight__option-placeholder' }}
-                      {%- endif -%}
+            {%- for product in collections.all.products -%}
+              {%- assign variant = product.selected_or_first_available_variant -%}
+              <li class="bundle-highlight__option">
+                <label class="bundle-highlight__option-label">
+                  <input
+                    type="checkbox"
+                    class="bundle-highlight__checkbox"
+                    data-bundle-item
+                    data-variant-id="{{ variant.id }}"
+                    data-price="{{ variant.price }}"
+                    {% unless variant.available %}disabled{% endunless %}
+                  >
+                  <span class="bundle-highlight__option-media">
+                    {%- if product.featured_media -%}
+                      <img
+                        src="{{ product.featured_media | image_url: width: 100 }}"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy"
+                      >
+                    {%- else -%}
+                      {{ 'product-1' | placeholder_svg_tag: 'bundle-highlight__option-placeholder' }}
+                    {%- endif -%}
+                  </span>
+                  <span class="bundle-highlight__option-info">
+                    <span class="bundle-highlight__option-title">
+                      {{ product.title }}
+                      {%- unless variant.available %} — {{ 'products.form.sold_out' | t }}{% endunless -%}
                     </span>
-                    <span class="bundle-highlight__option-info">
-                      <span class="bundle-highlight__option-title">
-                        {{ product.title }}
-                        {%- unless variant.available %} — {{ 'products.form.sold_out' | t }}{% endunless -%}
-                      </span>
-                      {%- render 'price', product: product, variant: variant -%}
-                    </span>
-                  </label>
-                </li>
-              {%- endif -%}
+                    {%- render 'price', product: product, variant: variant -%}
+                  </span>
+                </label>
+              </li>
             {%- endfor -%}
           </ul>
 
@@ -95,11 +96,12 @@
             </div>
           </div>
 
-          <button type="button" class="btn btn--primary btn--lg" data-bundle-submit disabled>
-            <span data-bundle-submit-label>{{ 'sections.bundle_highlight.cta' | t }}</span>
-          </button>
           <p class="bundle-highlight__hint" data-bundle-hint>{{ 'sections.bundle_highlight.empty_hint' | t }}</p>
-        {%- endif -%}
+
+          <button type="button" class="btn btn--primary btn--lg" data-bundle-submit disabled>
+            {{ 'sections.bundle_highlight.add_to_cart' | t }}
+          </button>
+        </div>
       </div>
     </bundle-builder>
   </div>
@@ -148,23 +150,9 @@
       "type": "text",
       "id": "discount_code",
       "label": "Code de réduction Shopify",
-      "info": "Le code (Admin > Réductions) appliqué automatiquement au clic sur le bouton. Doit être limité exactement aux produits proposés ci-dessous, sinon la réduction s'appliquera aussi à d'autres articles du panier."
+      "info": "Le code (Admin > Réductions) appliqué automatiquement au clic sur « Ajouter au panier ». Tous les produits actifs de la boutique sont proposés ici, donc ce code doit s'appliquer à l'ensemble de la boutique (pas limité à quelques produits)."
     }
   ],
-  "blocks": [
-    {
-      "type": "product",
-      "name": "Produit au choix",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Produit"
-        }
-      ]
-    }
-  ],
-  "max_blocks": 8,
   "presets": [
     {
       "name": "Bundle vedette"

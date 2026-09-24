@@ -9,6 +9,8 @@
 
   class BundleBuilder extends HTMLElement {
     connectedCallback() {
+      this.reveal = this.querySelector("[data-bundle-reveal]");
+      this.panel = this.querySelector("[data-bundle-panel]");
       this.checkboxes = Array.prototype.slice.call(this.querySelectorAll("[data-bundle-item]"));
       this.summary = this.querySelector("[data-bundle-summary]");
       this.subtotalEl = this.querySelector("[data-bundle-subtotal]");
@@ -20,6 +22,16 @@
       this.discountCode = this.dataset.discountCode || "";
 
       if (!this.checkboxes.length || !this.submit) return;
+
+      if (this.reveal && this.panel) {
+        this.reveal.addEventListener(
+          "click",
+          function () {
+            this.panel.hidden = false;
+            this.reveal.hidden = true;
+          }.bind(this)
+        );
+      }
 
       this.checkboxes.forEach(
         function (checkbox) {
