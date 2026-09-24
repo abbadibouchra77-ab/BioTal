@@ -118,6 +118,13 @@
       "default_subheading": "3 produits, 3 bundles, une seule routine à construire à votre rythme.",
       "view_all": "Voir tout"
     },
+    "featured_collection": {
+      "default_heading": "Notre gamme",
+      "default_subheading": "Découvrez l'ensemble de nos compléments alimentaires."
+    },
+    "collection_list": {
+      "default_heading": "Explorer par catégorie"
+    },
     "how_it_works": {
       "default_heading": "Comment ça marche",
       "default_subheading": "Une routine simple, en trois temps.",

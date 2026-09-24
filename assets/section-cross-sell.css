@@ -1,0 +1,20 @@
+.cross-sell__banner {
+  aspect-ratio: 21 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-bg-secondary);
+  margin-bottom: 2rem;
+}
+
+.cross-sell__banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 749px) {
+  .cross-sell__banner {
+    aspect-ratio: 4 / 3;
+  }
+}
