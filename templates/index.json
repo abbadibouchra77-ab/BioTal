@@ -101,11 +101,20 @@
         "image_position": "left"
       }
     },
+    "featured_product_iVXW89": {
+      "type": "featured-product",
+      "name": "Produit vedette",
+      "settings": {
+        "product": "duo-serenite-magnesium-4-en-1-vitamine-d3-k2",
+        "text": "",
+        "image_position": "right"
+      }
+    },
     "duo": {
       "type": "bundle-highlight",
       "settings": {
         "image": "shopify://shop_images/BioTal-Compo.jpg",
-        "image_position": "right",
+        "image_position": "left",
         "heading": "Composer votre routine en choisissant vos produits",
         "subheading": "<p>Choisissez librement parmi tous nos compléments et profitez de <strong>10% de réduction</strong> sur votre sélection.</p>",
         "discount_percent": 10,
@@ -227,8 +236,8 @@
         "w-4"
       ],
       "settings": {
-        "image": "shopify://shop_images/Duo_serenite.png",
-        "image_position": "left",
+        "image": "shopify://shop_images/ChatGPT_Image_24_sept._2026_21_50_57.png",
+        "image_position": "right",
         "background": "sage",
         "eyebrow": "Pourquoi BioTal",
         "heading": "La transparence avant tout",
@@ -337,6 +346,7 @@
     "star-magnesium",
     "star-omega",
     "star-collagene",
+    "featured_product_iVXW89",
     "duo",
     "bundle_highlight_BYNEd9",
     "objectifs",
