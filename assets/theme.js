@@ -110,6 +110,12 @@ window.BioTal = window.BioTal || {};
     var nav = document.getElementById("MobileNav");
     if (!toggle || !nav) return;
 
+    function closeNav() {
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("nav-open");
+    }
+
     toggle.addEventListener("click", function () {
       var isOpen = nav.classList.toggle("is-open");
       toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
@@ -122,11 +128,19 @@ window.BioTal = window.BioTal || {};
 
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && nav.classList.contains("is-open")) {
-        nav.classList.remove("is-open");
-        toggle.setAttribute("aria-expanded", "false");
-        document.body.classList.remove("nav-open");
+        closeNav();
         toggle.focus();
       }
+    });
+
+    /* Referme le tiroir au clic sur un lien : sans ça, "overflow: hidden"
+       (posé sur body.nav-open) bloque le défilement de toute la page tant que
+       le tiroir reste ouvert — invisible pour un lien qui change de page
+       (le rechargement réinitialise tout), mais ça empêche silencieusement
+       les liens d'ancrage vers la même page (ex. "#shopify-section-...")
+       de faire défiler jusqu'à leur cible. */
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeNav);
     });
   });
 
