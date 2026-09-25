@@ -1,4 +1,7 @@
-<section class="bundle-highlight section bundle-highlight--{{ section.settings.image_position }}" id="shopify-section-{{ section.id }}">
+<section
+  class="bundle-highlight section bundle-highlight--{{ section.settings.image_position }}"
+  id="{% if section.settings.anchor != blank %}{{ section.settings.anchor }}{% else %}shopify-section-{{ section.id }}{% endif %}"
+>
   <div class="page-width">
     <bundle-builder
       class="bundle-highlight__card card card--soft"
@@ -114,6 +117,12 @@
 {
   "name": "Bundle vedette",
   "settings": [
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Identifiant d'ancre (lien direct)",
+      "info": "Optionnel. Permet de créer un lien direct vers cette section depuis un menu ou un autre bouton (ex. \"composer-routine\" → le lien est /#composer-routine). Uniquement des lettres, chiffres et tirets, sans espace ni #. Laisser vide sinon."
+    },
     {
       "type": "image_picker",
       "id": "image",

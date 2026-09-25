@@ -113,6 +113,7 @@
     "duo": {
       "type": "bundle-highlight",
       "settings": {
+        "anchor": "composer-routine",
         "image": "shopify://shop_images/BioTal-Compo.jpg",
         "image_position": "left",
         "heading": "Composer votre routine en choisissant vos produits",

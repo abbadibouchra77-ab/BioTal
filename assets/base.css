@@ -15,9 +15,12 @@
   box-sizing: border-box;
 }
 
-/* Décale la cible d'une ancre (#shopify-section-xxx) sous le header sticky,
-   pour que son titre ne soit pas caché derrière au moment du défilement. */
-.shopify-section {
+/* Décale la cible d'une ancre sous le header sticky, pour que son titre ne
+   soit pas caché derrière au moment du défilement (auto-générée par Shopify
+   pour chaque section, ou ancre personnalisée posée directement sur .section
+   via le réglage "anchor" d'une section comme bundle-highlight). */
+.shopify-section,
+.section {
   scroll-margin-top: var(--header-height);
 }
 
