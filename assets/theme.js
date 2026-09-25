@@ -106,26 +106,53 @@ window.BioTal = window.BioTal || {};
 
   /* ---------- Défilement fiable vers une ancre (ex. liens de menu vers
      #shopify-section-xxx) ----------
-     Le saut natif du navigateur vers l'ancre peut avoir lieu avant que les
-     images "lazy" plus haut dans la page (héros, produits vedettes...) aient
-     fini de charger et repoussé le contenu vers le bas : la cible n'est pas
-     encore à sa position finale au moment du saut, qui atterrit alors au
-     mauvais endroit — ou semble ne rien faire si l'écart est faible. On
-     refait le calcul nous-mêmes une fois la page (et ses images) chargée,
-     et à chaque changement de #ancre (clic sur un lien de menu). */
-  function scrollToHashTarget() {
-    if (!window.location.hash) return;
+     On ne compte plus du tout sur le comportement natif du navigateur pour
+     ce cas précis : un clic sur un lien "#ancre" pointant vers la page
+     courante est intercepté et géré entièrement nous-mêmes (preventDefault +
+     scrollIntoView), pour ne dépendre d'aucun détail d'implémentation du
+     navigateur (id dupliqué généré par Shopify pour chaque section, timing
+     du saut natif par rapport aux images "lazy" qui chargent plus haut dans
+     la page et repoussent le contenu vers le bas, etc.). Le cas d'un lien
+     "#ancre" ouvert depuis une AUTRE page (navigation complète) reste géré
+     via l'écouteur "load" ci-dessous. */
+  function getHashTarget(hash) {
+    if (!hash) return null;
     var id;
     try {
-      id = decodeURIComponent(window.location.hash.slice(1));
+      id = decodeURIComponent(hash.slice(1));
     } catch (e) {
-      id = window.location.hash.slice(1);
+      id = hash.slice(1);
     }
-    var target = id && document.getElementById(id);
+    return id ? document.getElementById(id) : null;
+  }
+
+  function scrollToHashTarget() {
+    var target = getHashTarget(window.location.hash);
     if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
   }
   window.addEventListener("load", scrollToHashTarget);
-  window.addEventListener("hashchange", scrollToHashTarget);
+
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest && event.target.closest("a[href]");
+    if (!link) return;
+
+    var url;
+    try {
+      url = new URL(link.getAttribute("href"), window.location.href);
+    } catch (e) {
+      return;
+    }
+    if (!url.hash || url.pathname !== window.location.pathname) return;
+
+    var target = getHashTarget(url.hash);
+    if (!target) return;
+
+    event.preventDefault();
+    if (window.location.hash !== url.hash) {
+      history.pushState(null, "", url.hash);
+    }
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 
   /* ---------- Menu mobile (header) ---------- */
   document.addEventListener("DOMContentLoaded", function () {
