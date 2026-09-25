@@ -44,7 +44,7 @@
 
         <div class="bundle-highlight__panel" data-bundle-panel hidden>
           <ul class="bundle-highlight__picker">
-            {%- for product in collections.all.products -%}
+            {%- for product in collections.all.products limit: 250 -%}
               {%- assign variant = product.selected_or_first_available_variant -%}
               <li class="bundle-highlight__option">
                 <label class="bundle-highlight__option-label">
