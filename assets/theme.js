@@ -104,6 +104,29 @@ window.BioTal = window.BioTal || {};
     if (event.persisted) refreshCartCount();
   });
 
+  /* ---------- Défilement fiable vers une ancre (ex. liens de menu vers
+     #shopify-section-xxx) ----------
+     Le saut natif du navigateur vers l'ancre peut avoir lieu avant que les
+     images "lazy" plus haut dans la page (héros, produits vedettes...) aient
+     fini de charger et repoussé le contenu vers le bas : la cible n'est pas
+     encore à sa position finale au moment du saut, qui atterrit alors au
+     mauvais endroit — ou semble ne rien faire si l'écart est faible. On
+     refait le calcul nous-mêmes une fois la page (et ses images) chargée,
+     et à chaque changement de #ancre (clic sur un lien de menu). */
+  function scrollToHashTarget() {
+    if (!window.location.hash) return;
+    var id;
+    try {
+      id = decodeURIComponent(window.location.hash.slice(1));
+    } catch (e) {
+      id = window.location.hash.slice(1);
+    }
+    var target = id && document.getElementById(id);
+    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  window.addEventListener("load", scrollToHashTarget);
+  window.addEventListener("hashchange", scrollToHashTarget);
+
   /* ---------- Menu mobile (header) ---------- */
   document.addEventListener("DOMContentLoaded", function () {
     var toggle = document.querySelector("[data-mobile-nav-toggle]");
