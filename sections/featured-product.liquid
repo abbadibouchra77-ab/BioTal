@@ -1,7 +1,7 @@
 {%- liquid
   assign product = section.settings.product
 -%}
-<section class="featured-product section featured-product--{{ section.settings.image_position }}" id="shopify-section-{{ section.id }}">
+<section class="featured-product section featured-product--{{ section.settings.image_position }}">
   <div class="page-width">
     {%- if product -%}
       {%- assign variant = product.selected_or_first_available_variant -%}

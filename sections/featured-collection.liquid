@@ -2,7 +2,7 @@
   assign collection = section.settings.collection
   assign columns = section.settings.columns_desktop | default: '4'
 -%}
-<section class="featured-collection section" id="shopify-section-{{ section.id }}">
+<section class="featured-collection section">
   <div class="page-width">
     <div class="section-header {% if section.settings.center_heading %}section-header--center{% endif %}">
       <h2>
