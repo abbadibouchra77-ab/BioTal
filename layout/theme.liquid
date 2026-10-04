@@ -27,6 +27,13 @@
 
   {%- render 'meta-tags' -%}
 
+  {%- comment -%} Résultats de recherche interne : à ne pas indexer (contenu dupliqué/infini). {%- endcomment -%}
+  {%- if template == 'search' -%}
+    <meta name="robots" content="noindex, follow">
+  {%- endif -%}
+
+  {%- render 'structured-data' -%}
+
   <title>
     {{ page_title }}
     {%- if current_tags %} &ndash; {{ 'general.meta.tagged_with' | t: tags: current_tags | join: ', ' }}{% endif -%}

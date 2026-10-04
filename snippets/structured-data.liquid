@@ -1,0 +1,54 @@
+{%- comment -%}
+  Données structurées JSON-LD (schema.org) pour les moteurs de recherche :
+  - Organization + WebSite sur la page d'accueil uniquement ;
+  - Product (offres, disponibilité, avis) sur les fiches produit, via le filtre natif
+    structured_data de Shopify, toujours à jour avec les variantes/prix.
+{%- endcomment -%}
+{%- if template == 'index' -%}
+  {%- liquid
+    assign same_as = ''
+    for network in 'instagram,tiktok,facebook,pinterest' | split: ','
+      assign setting_key = 'social_' | append: network
+      if settings[setting_key] != blank
+        assign same_as = same_as | append: settings[setting_key] | append: '|'
+      endif
+    endfor
+    assign same_as_list = same_as | split: '|'
+  -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": {{ shop.url | append: '/#organization' | json }},
+          "name": {{ shop.name | json }},
+          "url": {{ shop.url | json }}
+          {%- if settings.logo -%}
+          ,"logo": {{ settings.logo | image_url: width: 600 | prepend: 'https:' | json }}
+          {%- endif -%}
+          {%- if same_as_list.size > 0 -%}
+          ,"sameAs": {{ same_as_list | json }}
+          {%- endif -%}
+        },
+        {
+          "@type": "WebSite",
+          "@id": {{ shop.url | append: '/#website' | json }},
+          "name": {{ shop.name | json }},
+          "url": {{ shop.url | json }},
+          "inLanguage": {{ request.locale.iso_code | json }},
+          "publisher": { "@id": {{ shop.url | append: '/#organization' | json }} },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {{ shop.url | append: routes.search_url | append: '?q={search_term_string}' | json }},
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+  </script>
+{%- elsif template contains 'product' -%}
+  <script type="application/ld+json">
+    {{ product | structured_data }}
+  </script>
+{%- endif -%}
