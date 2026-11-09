@@ -89,7 +89,7 @@
     "payment_heading": "Paiement sécurisé",
     "company_heading": "BioTal",
     "help_heading": "Aide",
-    "made_in": "Formulé en Europe · Expédié depuis l'Allemagne",
+    "made_in": "Fabriqué et expédié en Allemagne",
     "copyright": "© {{ year }} {{ shop }}. Tous droits réservés."
   },
   "sections": {
@@ -106,7 +106,7 @@
       "payment_text": "Vos données sont protégées",
       "guarantee_title": "Satisfait ou remboursé",
       "guarantee_text": "30 jours pour changer d'avis",
-      "made_in_title": "Fabriqué en Europe",
+      "made_in_title": "Fabriqué en Allemagne",
       "made_in_text": "Standards de qualité européens"
     },
     "featured_product": {

@@ -14,7 +14,7 @@
       "settings": {
         "badge_text": "Livraison offerte dès 50 € en France",
         "heading": "Magnésium, Oméga 3, Collagène : vos essentiels du quotidien",
-        "subheading": "<p>Des compléments fabriqués en Europe, une composition 100 % affichée et des formules pensées pour une routine simple. <strong>Satisfait ou remboursé 14 jours.</strong></p>",
+        "subheading": "<p>Des compléments fabriqués en Allemagne, une composition 100 % affichée et des formules pensées pour une routine simple. <strong>Satisfait ou remboursé 14 jours.</strong></p>",
         "button_label": "Je découvre les incontournables",
         "button_link": "shopify://collections/nos-incontournables",
         "image": "shopify://shop_images/BioTal-Hero.jpg",
@@ -44,7 +44,7 @@
           "type": "item",
           "settings": {
             "icon": "leaf",
-            "title": "Fabriqué en Europe",
+            "title": "Fabriqué en Allemagne",
             "text": "Composition complète affichée"
           }
         },
@@ -208,7 +208,7 @@
         "w-1": {
           "type": "point",
           "settings": {
-            "text": "Formulé et fabriqué en Europe"
+            "text": "Fabriqué en Allemagne"
           }
         },
         "w-2": {
@@ -324,7 +324,7 @@
           "type": "question",
           "settings": {
             "question": "Puis-je me faire rembourser ?",
-            "answer": "<p>Oui, vous disposez de 14 jours après réception pour changer d'avis. Écrivez-nous à contact@biotal.fr pour organiser le retour.</p>"
+            "answer": "<p>Oui, vous disposez de 14 jours après réception pour changer d'avis. Écrivez-nous à contact@biotal.fr, puis renvoyez le produit à : BOD Logistics, Butenring 22, 25479 Ellerau, Allemagne. Tout article abîmé, sale ou ouvert ne sera pas remboursé. Détails dans notre <a href=\"/policies/refund-policy\">politique de retour et de remboursement</a>.</p>"
           }
         }
       },
