@@ -12,7 +12,7 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "badge_text": "Livraison 72h en France",
+        "badge_text": "Livraison offerte dès 50 € en France",
         "heading": "Magnésium, Oméga 3, Collagène : vos essentiels du quotidien",
         "subheading": "<p>Des compléments fabriqués en Europe, une composition 100 % affichée et des formules pensées pour une routine simple. <strong>Satisfait ou remboursé 14 jours.</strong></p>",
         "button_label": "Je découvre les incontournables",
@@ -28,7 +28,7 @@
           "type": "item",
           "settings": {
             "icon": "truck",
-            "title": "Livraison incluse",
+            "title": "Livraison offerte dès 50 €",
             "text": "Expédiée depuis l'Europe vers la France"
           }
         },
@@ -142,7 +142,7 @@
           "type": "collection",
           "settings": {
             "collection": "sommeil-stress",
-            "title": "Sommeil & Stress",
+            "title": "Routine du soir",
             "image": "shopify://shop_images/71520e7e-e179-4a13-a56c-cfcf48119570.jpg"
           }
         },
@@ -150,7 +150,7 @@
           "type": "collection",
           "settings": {
             "collection": "immunite-vitalite",
-            "title": "Immunité & Vitalité",
+            "title": "Vitamines & Minéraux",
             "image": "shopify://shop_images/2dac7a8c-cdaf-4130-ac16-b9581e5e038e.jpg"
           }
         },
@@ -197,7 +197,7 @@
       ],
       "settings": {
         "heading": "Vous cherchez autre chose ?",
-        "subheading": "<p>Explorez toute la gamme par objectif.</p>",
+        "subheading": "<p>Explorez toute la gamme par thème.</p>",
         "center_heading": true,
         "columns_desktop": "3"
       }
@@ -226,7 +226,7 @@
         "w-4": {
           "type": "point",
           "settings": {
-            "text": "Livraison incluse, 14 jours pour changer d'avis"
+            "text": "Livraison offerte dès 50 €, 14 jours pour changer d'avis"
           }
         }
       },
@@ -261,7 +261,7 @@
           "type": "step",
           "settings": {
             "title": "Je reçois ma commande",
-            "text": "Livraison incluse en France, suivi par e-mail."
+            "text": "Livraison offerte dès 50 € en France, suivi par e-mail."
           }
         },
         "step-3": {
@@ -295,8 +295,8 @@
         "q-1": {
           "type": "question",
           "settings": {
-            "question": "La livraison est-elle vraiment incluse ?",
-            "answer": "<p>Oui : le prix affiché comprend la livraison en France métropolitaine. Aucun frais caché au moment du paiement.</p>"
+            "question": "Quels sont les frais de livraison ?",
+            "answer": "<p>La livraison est offerte dès 50 € d'achat en France métropolitaine. En dessous, les frais sont affichés avant le paiement, sans surprise.</p>"
           }
         },
         "q-2": {
@@ -324,7 +324,7 @@
           "type": "question",
           "settings": {
             "question": "Puis-je me faire rembourser ?",
-            "answer": "<p>Oui, vous disposez de 14 jours pour changer d'avis. Retrouvez les détails dans notre politique de retour.</p>"
+            "answer": "<p>Oui, vous disposez de 14 jours après réception pour changer d'avis. Écrivez-nous à contact@biotal.fr pour organiser le retour.</p>"
           }
         }
       },
