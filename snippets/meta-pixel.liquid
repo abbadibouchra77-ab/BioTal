@@ -1,0 +1,64 @@
+{%- comment -%}
+  Meta Pixel (Facebook) — ID 1765685331176577.
+
+  Code fourni par Meta, enveloppé dans un contrôle de consentement (RGPD/ePrivacy) :
+  le script fbevents.js n'est chargé que si le visiteur a accepté le suivi marketing via
+  l'API Customer Privacy de Shopify (bannière cookies Shopify). Si aucune bannière n'est
+  requise pour la région du visiteur, Shopify renvoie marketingAllowed() = true et le pixel
+  se charge immédiatement. Si le visiteur accepte plus tard, l'événement
+  'visitorConsentCollected' déclenche le chargement à ce moment-là.
+
+  La balise <noscript> fournie par Meta est volontairement omise : elle enverrait un
+  PageView sans aucune possibilité de vérifier le consentement.
+
+  Désactivé dans l'éditeur de thème pour ne pas fausser les statistiques.
+{%- endcomment -%}
+{%- unless request.design_mode -%}
+  <script>
+    (function () {
+      var PIXEL_ID = '1765685331176577';
+      var loaded = false;
+
+      function loadMetaPixel() {
+        if (loaded) return;
+        loaded = true;
+        // Meta Pixel Code
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', PIXEL_ID);
+        fbq('track', 'PageView');
+        // End Meta Pixel Code
+      }
+
+      function marketingAllowed() {
+        var privacy = window.Shopify && window.Shopify.customerPrivacy;
+        return !!(privacy && typeof privacy.marketingAllowed === 'function' && privacy.marketingAllowed());
+      }
+
+      function init() {
+        if (marketingAllowed()) loadMetaPixel();
+      }
+
+      document.addEventListener('visitorConsentCollected', function (event) {
+        if (event.detail && event.detail.marketingAllowed) loadMetaPixel();
+      });
+
+      window.addEventListener('DOMContentLoaded', function () {
+        if (window.Shopify && typeof window.Shopify.loadFeatures === 'function') {
+          window.Shopify.loadFeatures(
+            [{ name: 'consent-tracking-api', version: '0.1' }],
+            function (error) {
+              if (!error) init();
+            }
+          );
+        }
+      });
+    })();
+  </script>
+{%- endunless -%}

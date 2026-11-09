@@ -109,6 +109,8 @@
   </script>
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+
+  {% render 'meta-pixel' %}
 </head>
 
 <body class="template-{{ request.page_type }}">
